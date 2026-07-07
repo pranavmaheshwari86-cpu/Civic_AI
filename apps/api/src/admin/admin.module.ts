@@ -9,6 +9,7 @@ import { ComplaintStatusUpdate, ComplaintStatusUpdateSchema } from '../common/sc
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { BullModule } from '@nestjs/bullmq';
+import { AdminJwtStrategy } from './admin-jwt.strategy';
 
 @Module({
   imports: [
@@ -29,6 +30,6 @@ import { BullModule } from '@nestjs/bullmq';
     }),
   ],
   controllers: [AdminController],
-  providers: [AdminService],
+  providers: [AdminService, AdminJwtStrategy],
 })
 export class AdminModule {}

@@ -23,9 +23,14 @@ export class ChatService {
     @InjectModel(ServiceCatalog.name) private catalogModel: Model<ServiceCatalogDocument>,
     @Inject('REDIS_CLIENT') private readonly redis: Redis,
   ) {
-    const apiKey = this.configService.get<string>('ANTHROPIC_API_KEY') || '';
-    this.isMock = !apiKey || apiKey === 'mock-key';
-    this.anthropic = new Anthropic({ apiKey: apiKey || 'sk-placeholder' });
+    const anthropicKey = this.configService.get<string>('ANTHROPIC_API_KEY') || '';
+    const geminiKey = this.configService.get<string>('GEMINI_API_KEY') || '';
+    
+    const hasAnthropic = anthropicKey && anthropicKey !== 'mock-key' && anthropicKey !== 'sk-placeholder';
+    const hasGemini = geminiKey && geminiKey !== 'mock-key' && geminiKey !== 'your_gemini_api_key';
+    
+    this.isMock = !hasAnthropic && !hasGemini;
+    this.anthropic = new Anthropic({ apiKey: anthropicKey || 'sk-placeholder' });
   }
 
   async getOrCreateConversation(conversationId: string | null, userId?: string, sessionId?: string): Promise<ConversationDocument> {
@@ -44,6 +49,42 @@ export class ChatService {
     if (this.isCircuitTripped() || this.isMock) {
       return { category: 'general', detectedLanguage: 'en' };
     }
+
+    const geminiKey = this.configService.get<string>('GEMINI_API_KEY');
+    if (geminiKey && geminiKey !== 'mock-key' && geminiKey !== 'your_gemini_api_key') {
+      try {
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiKey}`;
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: message }] }],
+            systemInstruction: {
+              parts: [{ text: 'Classify the user message intent. Return ONLY valid JSON: {"category":"document_info"|"complaint"|"scheme_lookup"|"general"|"unknown","detectedLanguage":"en"|"hi"}' }]
+            },
+            generationConfig: {
+              responseMimeType: 'application/json',
+              temperature: 0.1,
+            }
+          })
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '{}';
+          this.resetCircuit();
+          const parsed = JSON.parse(text.trim());
+          return {
+            category: parsed.category || 'general',
+            detectedLanguage: parsed.detectedLanguage || 'en',
+          };
+        }
+      } catch (err) {
+        console.error('Failed to call Gemini for intent classification, trying Claude...', err);
+        this.recordFailure();
+      }
+    }
+
     try {
       const response = await this.anthropic.messages.create({
         model: 'claude-3-haiku-20240307',
@@ -55,7 +96,8 @@ export class ChatService {
       this.resetCircuit();
       const parsed = JSON.parse(text);
       return { category: parsed.category || 'general', detectedLanguage: parsed.detectedLanguage || 'en' };
-    } catch {
+    } catch (err) {
+      console.error('Failed to call Claude for intent classification', err);
       this.recordFailure();
       return { category: 'general', detectedLanguage: 'en' };
     }
@@ -85,6 +127,43 @@ export class ChatService {
     }
 
     const systemPrompt = this.buildSystemPrompt(intent);
+    const geminiKey = this.configService.get<string>('GEMINI_API_KEY');
+
+    if (geminiKey && geminiKey !== 'mock-key' && geminiKey !== 'your_gemini_api_key') {
+      try {
+        const contents = contextMessages.map(m => ({
+          role: m.role === 'assistant' ? 'model' : 'user',
+          parts: [{ text: m.content }]
+        }));
+        contents.push({ role: 'user', parts: [{ text: userMessage }] });
+
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiKey}`;
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents,
+            systemInstruction: {
+              parts: [{ text: systemPrompt }]
+            },
+            generationConfig: {
+              temperature: 0.3,
+            }
+          })
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+          this.resetCircuit();
+          return { content: text, confidenceScore: 0.95, catalogIds: [] };
+        }
+      } catch (err) {
+        console.error('Failed to call Gemini for response generation, trying Claude...', err);
+        this.recordFailure();
+      }
+    }
+
     const messages = [
       ...contextMessages.map((m) => ({ role: m.role as 'user' | 'assistant', content: m.content })),
       { role: 'user' as const, content: userMessage },
@@ -100,7 +179,8 @@ export class ChatService {
       const text = response.content[0].type === 'text' ? response.content[0].text : '';
       this.resetCircuit();
       return { content: text, confidenceScore: 0.9, catalogIds: [] };
-    } catch {
+    } catch (err) {
+      console.error('Failed to call Claude for response generation', err);
       this.recordFailure();
       throw new InternalServerErrorException('AI service unavailable');
     }

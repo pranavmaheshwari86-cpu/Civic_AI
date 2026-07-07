@@ -12,16 +12,17 @@ export class UploadService {
   constructor() {
     this.s3Client = new S3Client({
       region: 'auto',
-      endpoint: process.env.R2_ENDPOINT || '',
+      endpoint: process.env.CLOUDFLARE_R2_ENDPOINT || process.env.R2_ENDPOINT || '',
       credentials: {
-        accessKeyId: process.env.R2_ACCESS_KEY_ID || '',
-        secretAccessKey: process.env.R2_SECRET_ACCESS_KEY || '',
+        accessKeyId: process.env.CLOUDFLARE_R2_ACCESS_KEY_ID || process.env.R2_ACCESS_KEY_ID || '',
+        secretAccessKey: process.env.CLOUDFLARE_R2_SECRET_ACCESS_KEY || process.env.R2_SECRET_ACCESS_KEY || '',
       },
     });
   }
 
   async getPresignedUploadUrl(contentType: string, originalFilename: string) {
-    if (!process.env.R2_BUCKET_NAME) {
+    const bucket = process.env.CLOUDFLARE_R2_BUCKET_NAME || process.env.R2_BUCKET_NAME;
+    if (!bucket) {
       throw new InternalServerErrorException('Storage bucket not configured');
     }
     
@@ -30,7 +31,7 @@ export class UploadService {
     const key = `complaints/${Date.now()}-${nanoid()}.${ext}`;
 
     const command = new PutObjectCommand({
-      Bucket: process.env.R2_BUCKET_NAME,
+      Bucket: bucket,
       Key: key,
       ContentType: contentType,
     });

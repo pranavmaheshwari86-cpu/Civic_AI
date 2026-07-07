@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
+import { LanguageToggle } from "./LanguageToggle";
 import { Menu } from "lucide-react";
 
 export function Header() {
@@ -21,6 +22,7 @@ export function Header() {
           </nav>
         </div>
         <div className="flex items-center gap-2">
+          <LanguageToggle />
           <ThemeToggle />
           <button className="md:hidden p-2 rounded-md hover:bg-muted" aria-label="Menu">
             <Menu className="w-5 h-5" />

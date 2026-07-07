@@ -1,6 +1,8 @@
-import { Controller, Post, Get, Patch, Delete, Body, Param, Query, HttpCode } from '@nestjs/common';
+import { Controller, Post, Get, Patch, Delete, Body, Param, Query, HttpCode, UseGuards } from '@nestjs/common';
 import { AdminService } from './admin.service';
 import { IsString, IsOptional, IsEmail } from 'class-validator';
+import { AdminJwtAuthGuard } from './admin-jwt-auth.guard';
+import { AdminRoleGuard } from '../common/guards/admin-role.guard';
 
 class AdminLoginDto {
   @IsEmail()
@@ -35,27 +37,32 @@ export class AdminController {
     return this.adminService.login(dto.email, dto.password);
   }
 
+  @UseGuards(AdminJwtAuthGuard, AdminRoleGuard)
   @Get('catalog/services')
   async listCatalog(@Query('page') page?: string, @Query('limit') limit?: string) {
     return this.adminService.listCatalog(parseInt(page || '1', 10), parseInt(limit || '20', 10));
   }
 
+  @UseGuards(AdminJwtAuthGuard, AdminRoleGuard)
   @Post('catalog/services')
   @HttpCode(201)
   async createCatalog(@Body() dto: CreateCatalogDto) {
     return this.adminService.createCatalogEntry(dto as any);
   }
 
+  @UseGuards(AdminJwtAuthGuard, AdminRoleGuard)
   @Patch('catalog/services/:id')
   async updateCatalog(@Param('id') id: string, @Body() dto: Partial<CreateCatalogDto>) {
     return this.adminService.updateCatalogEntry(id, dto as any);
   }
 
+  @UseGuards(AdminJwtAuthGuard, AdminRoleGuard)
   @Delete('catalog/services/:id')
   async deleteCatalog(@Param('id') id: string) {
     return this.adminService.deleteCatalogEntry(id);
   }
 
+  @UseGuards(AdminJwtAuthGuard, AdminRoleGuard)
   @Get('complaints')
   async listComplaints(
     @Query('page') page?: string,
@@ -71,6 +78,7 @@ export class AdminController {
     );
   }
 
+  @UseGuards(AdminJwtAuthGuard, AdminRoleGuard)
   @Patch('complaints/:id/status')
   async updateComplaintStatus(@Param('id') id: string, @Body() dto: UpdateStatusDto) {
     return this.adminService.updateComplaintStatus(id, dto.status, dto.note);

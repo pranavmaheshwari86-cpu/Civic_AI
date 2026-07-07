@@ -1,0 +1,22 @@
+import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { PassportStrategy } from '@nestjs/passport';
+import { ExtractJwt, Strategy } from 'passport-jwt';
+import { ConfigService } from '@nestjs/config';
+
+@Injectable()
+export class AdminJwtStrategy extends PassportStrategy(Strategy, 'admin-jwt') {
+  constructor(configService: ConfigService) {
+    super({
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      ignoreExpiration: false,
+      secretOrKey: configService.get<string>('ADMIN_JWT_SECRET') || 'admin_default_secret',
+    });
+  }
+
+  async validate(payload: any) {
+    if (!payload.sub || !payload.email || !payload.role) {
+      throw new UnauthorizedException('Invalid token payload');
+    }
+    return { adminId: payload.sub, email: payload.email, role: payload.role };
+  }
+}
