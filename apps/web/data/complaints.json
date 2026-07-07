@@ -1,0 +1,18 @@
+[
+  {
+    "id": "CMP-2026-000482",
+    "category": "civic",
+    "department": "Municipal Corporation",
+    "priority": "medium",
+    "summary": "Pothole on main road causing accidents.",
+    "location": "Main Street, City Center",
+    "status": "in-progress",
+    "estimatedResolutionDate": "2026-07-15",
+    "createdAt": "2026-07-01T10:00:00Z",
+    "timeline": [
+      { "stage": "submitted", "timestamp": "2026-07-01T10:00:00Z" },
+      { "stage": "assigned", "timestamp": "2026-07-02T09:00:00Z" },
+      { "stage": "in-progress", "timestamp": "2026-07-03T11:00:00Z" }
+    ]
+  }
+]

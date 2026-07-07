@@ -1,0 +1,12 @@
+[
+  {
+    "id": "POL-001",
+    "title": "Digital Personal Data Protection Act",
+    "summary": "Governs how digital personal data is processed.",
+    "keyPoints": ["Consent is mandatory", "Data fiduciaries must secure data"],
+    "deadlines": [],
+    "benefits": ["Better privacy", "Control over personal data"],
+    "penalties": ["High fines for breaches"],
+    "plainLanguageRewrite": "This policy ensures your personal data online is protected by companies. They must ask for your permission before using it."
+  }
+]

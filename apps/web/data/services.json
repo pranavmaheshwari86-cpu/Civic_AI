@@ -1,0 +1,8 @@
+[
+  {
+    "id": "SRV-001",
+    "name": "Aadhaar Update",
+    "departmentId": "DEP-UIDAI",
+    "description": "Update name, address, or mobile number in Aadhaar."
+  }
+]

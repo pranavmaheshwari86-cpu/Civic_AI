@@ -1,0 +1,15 @@
+{
+  "collectionName": "scheme_catalog",
+  "database": "smart-bharat",
+  "name": "vector_index",
+  "mappings": {
+    "dynamic": true,
+    "fields": {
+      "embedding": {
+        "dimensions": 1024,
+        "similarity": "cosine",
+        "type": "knnVector"
+      }
+    }
+  }
+}

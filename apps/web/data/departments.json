@@ -1,0 +1,14 @@
+[
+  {
+    "id": "DEP-001",
+    "name": "Municipal Corporation",
+    "category": "civic",
+    "avgResponseTimeHours": 48
+  },
+  {
+    "id": "DEP-002",
+    "name": "Traffic Police",
+    "category": "law-enforcement",
+    "avgResponseTimeHours": 24
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "id": "SCH-001",
+    "name": "PM Kisaan Samman Nidhi",
+    "category": "farmer",
+    "eligibilityCriteria": {
+      "occupations": ["farmer"]
+    },
+    "benefits": ["Financial support of ₹6000 per year"],
+    "requiredDocuments": ["Aadhaar Card", "Bank Account Details", "Land Ownership Proof"],
+    "applicationSteps": ["Visit official portal", "Register Aadhaar", "Submit land details"],
+    "officialLink": "https://pmkisan.gov.in/"
+  },
+  {
+    "id": "SCH-002",
+    "name": "National Scholarship Portal",
+    "category": "student",
+    "eligibilityCriteria": {
+      "maxIncome": 250000,
+      "occupations": ["student"]
+    },
+    "benefits": ["Financial assistance for education"],
+    "requiredDocuments": ["Income Certificate", "Aadhaar Card", "Previous Marksheet"],
+    "applicationSteps": ["Register on NSP", "Fill application form", "Upload documents"],
+    "officialLink": "https://scholarships.gov.in/"
+  }
+]

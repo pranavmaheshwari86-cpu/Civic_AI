@@ -1,0 +1,21 @@
+{
+  "name": "smart-bharat",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Smart Bharat — AI-Powered Civic Companion",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "dev:api": "npm run start:dev --workspace=api",
+    "dev:web": "npm run dev --workspace=web",
+    "dev:worker": "npm run dev --workspace=worker"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
