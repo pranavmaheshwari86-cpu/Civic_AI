@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-07-07 (Hackathon Optimization)
+
+- **Security:** Created `AdminJwtStrategy` + `AdminJwtAuthGuard` — all admin endpoints now require valid admin JWT
+- **Security:** Bound global `ThrottlerGuard` (10 req/min) for DDoS protection
+- **AI:** Integrated Google Gemini 1.5 Flash as primary LLM with fallback to Anthropic Claude → Mock
+- **i18n:** Created `LanguageToggle` component with persistent cookie-based locale switching (EN/HI)
+- **Health Check:** Upgraded `/healthz` to verify MongoDB and Redis connectivity with degraded status support
+- **Documentation:** Created comprehensive `README.md`, `LICENSE` (MIT), `SECURITY.md`
+- **Infrastructure:** Added Docker healthchecks for MongoDB and Redis containers
+- **Config:** Aligned `.env.example` with all environment variables used in codebase (GEMINI_API_KEY, FRONTEND_URL, R2_PUBLIC_DOMAIN, REDIS_HOST/PORT)
+- **Code Quality:** Removed unused `AppService` dependency from `AppController`/`AppModule`
+- **Tests:** Updated `app.controller.spec.ts` with Mongoose + Redis mocks and degraded-state test case
+
 ## 2026-07-07 (TRD v1.0)
 
 - Updated all memory files with Technical Requirements Document v1.0 specifics

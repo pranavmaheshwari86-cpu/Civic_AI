@@ -4,7 +4,7 @@
 
 ## Implementation State
 
-**Phase:** Code complete (v1). All core backend modules, frontend pages, worker jobs, tests, and deployment configs are built. Ready for staging deployment and end-to-end verification.
+**Phase:** Code complete (v1) + Hackathon Optimized. All core backend modules, frontend pages, worker jobs, tests, and deployment configs are built. Security hardening, multi-provider AI, i18n, and documentation polish applied.
 
 ## Completed
 
@@ -45,11 +45,19 @@
 - [x] CI/CD: GitHub Actions pipeline (lint → typecheck → build → test with MongoDB/Redis services)
 - [x] Deployment: Railway configs (railway.toml for api, web, worker)
 - [x] Root workspace scripts (build, test, lint, dev:api, dev:web, dev:worker)
-- [x] .env.example with all variable keys
+- [x] .env.example with all variable keys (aligned with codebase)
 - [x] Sentry error tracking setup
 - [x] Accessibility audit (WCAG 2.1 AA)
 - [x] Performance validation (3s chat latency, 8s complaint submission)
 - [x] Resolve remaining open questions (Q1, Q2, Q3, Q5, Q7-Q12)
+- [x] Google Gemini 1.5 Flash integration (primary LLM with Claude fallback)
+- [x] Admin JWT authentication (AdminJwtStrategy + AdminJwtAuthGuard)
+- [x] Global rate limiting (ThrottlerGuard, 10 req/min)
+- [x] Health check upgrade (MongoDB + Redis ping verification)
+- [x] Language toggle UI component (persistent EN/HI switching)
+- [x] README.md, LICENSE (MIT), SECURITY.md documentation
+- [x] Docker healthchecks for MongoDB and Redis
+- [x] Dead code removal (AppService from AppController)
 - [x] DLT SMS template registration with MSG91 (Initiated)
 
 ## In Progress
@@ -60,7 +68,7 @@
 ## Not Started
 
 - [ ] Staging deployment (Railway)
-- [ ] Security review (rate limiting verification, file upload validation audit)
+- [x] Security review (rate limiting, admin auth guards, file upload validation)
 - [ ] Production deployment
 - [ ] Monitoring/alerting setup
 

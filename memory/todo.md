@@ -81,7 +81,7 @@
 - [ ] Smoke test checklist (run pre-deploy every release)
 - [x] Accessibility audit (WCAG 2.1 AA)
 - [x] Performance validation (latency targets)
-- [ ] Security review (no PII leaks, rate limiting, file upload validation)
+- [x] Security review (no PII leaks, rate limiting, file upload validation)
 
 ## Priority 7 — Launch Prep
 
