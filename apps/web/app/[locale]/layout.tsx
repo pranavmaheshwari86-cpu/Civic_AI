@@ -21,8 +21,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Smart Bharat - AI Civic Companion",
-  description: "AI-powered civic companion for Indian citizens",
+  title: "CivicAI — AI Civic Companion",
+  description: "CivicAI is an AI-powered civic companion for Indian citizens. Find government schemes, file complaints, and navigate services in plain language.",
+  keywords: ["government services", "civic complaints", "India government schemes", "AI assistant", "CivicAI"],
 };
 
 export default async function RootLayout({

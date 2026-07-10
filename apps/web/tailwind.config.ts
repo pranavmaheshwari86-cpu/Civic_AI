@@ -44,9 +44,9 @@ const config: Config = {
         },
       },
       borderRadius: {
-        lg: `oklch(var(--radius) / <alpha-value>)`,
-        md: `calc(oklch(var(--radius) / <alpha-value>) - 2px)`,
-        sm: `calc(oklch(var(--radius) / <alpha-value>) - 4px)`,
+        lg: `var(--radius)`,
+        md: `calc(var(--radius) - 2px)`,
+        sm: `calc(var(--radius) - 4px)`,
       },
     },
   },
