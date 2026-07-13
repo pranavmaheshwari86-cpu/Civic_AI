@@ -10,9 +10,11 @@ import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { BullModule } from '@nestjs/bullmq';
 import { AdminJwtStrategy } from './admin-jwt.strategy';
+import { PassportModule } from '@nestjs/passport';
 
 @Module({
   imports: [
+    PassportModule,
     MongooseModule.forFeature([
       { name: AdminUser.name, schema: AdminUserSchema },
       { name: ServiceCatalog.name, schema: ServiceCatalogSchema },

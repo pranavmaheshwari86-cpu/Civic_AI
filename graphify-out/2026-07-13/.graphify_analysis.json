@@ -1,0 +1,675 @@
+{
+  "communities": {
+    "0": [
+      "apps_web_e2e_screenshots_complaints_screenshot",
+      "apps_web_e2e_screenshots_schemes_screenshot",
+      "dotgithub_workflows_ci_yml_ci_pipeline",
+      "memory_architecture_complaint_flow",
+      "memory_database_md_schema",
+      "memory_deployment_md_railway",
+      "readme_civicai_platform",
+      "readme_complaint_management",
+      "readme_mongodb_atlas",
+      "readme_scheme_discovery"
+    ],
+    "1": [
+      "apps_web_e2e_screenshots_chat_screenshot",
+      "memory_architecture_chat_flow",
+      "memory_architecture_graceful_degradation",
+      "memory_tech_stack_anthropic_claude",
+      "readme_ai_chat",
+      "readme_circuit_breaker",
+      "readme_voyage_ai_embeddings"
+    ],
+    "2": [
+      "task_management_api_src_utils_errors_apperror",
+      "task_management_api_src_utils_errors_conflicterror",
+      "task_management_api_src_utils_errors_forbiddenerror",
+      "task_management_api_src_utils_errors_notfounderror",
+      "task_management_api_src_utils_errors_unauthorizederror",
+      "task_management_api_src_utils_errors_validationerror"
+    ],
+    "3": [
+      "docker_compose_yml_infra",
+      "memory_architecture_auth_flow",
+      "readme_bullmq_worker",
+      "readme_redis",
+      "readme_security_otp_auth"
+    ],
+    "4": [
+      "memory_api_md_api_contracts",
+      "memory_architecture_modular_monolith",
+      "memory_coding_standards_standards",
+      "memory_decisions_md_decisions",
+      "memory_tech_stack_nestjs"
+    ],
+    "5": [
+      "apps_web_design_md_design_system",
+      "memory_tech_stack_nextjs",
+      "memory_tech_stack_tanstack_query",
+      "memory_tech_stack_zustand"
+    ],
+    "6": [
+      "memory_changelog_md_changelog",
+      "memory_current_status_v1",
+      "memory_project_overview_md_overview",
+      "memory_todo_md_todo"
+    ],
+    "7": [
+      "dotclaude_skills_react_doctor_skill_md_react_doctor_skill",
+      "dotgithub_workflows_react_doctor_yml_react_doctor"
+    ],
+    "8": [
+      "task_management_api_readme_task_api",
+      "task_management_api_structure_md_structure"
+    ],
+    "9": [
+      "apps_api_src_admin_admin_controller_admincontroller"
+    ],
+    "10": [
+      "apps_api_src_admin_admin_jwt_auth_guard_adminjwtauthguard"
+    ],
+    "11": [
+      "apps_api_src_admin_admin_jwt_strategy_adminjwtstrategy"
+    ],
+    "12": [
+      "apps_api_src_admin_admin_module_adminmodule"
+    ],
+    "13": [
+      "apps_api_src_admin_admin_service_adminservice"
+    ],
+    "14": [
+      "apps_api_src_app_controller_appcontroller"
+    ],
+    "15": [
+      "apps_api_src_app_module_appmodule"
+    ],
+    "16": [
+      "apps_api_src_app_service_appservice"
+    ],
+    "17": [
+      "apps_api_src_auth_auth_controller_authcontroller"
+    ],
+    "18": [
+      "apps_api_src_auth_auth_module_authmodule"
+    ],
+    "19": [
+      "apps_api_src_auth_auth_service_authservice"
+    ],
+    "20": [
+      "apps_api_src_auth_jwt_auth_guard_jwtauthguard"
+    ],
+    "21": [
+      "apps_api_src_auth_jwt_strategy_jwtstrategy"
+    ],
+    "22": [
+      "apps_api_src_catalog_catalog_controller_catalogcontroller"
+    ],
+    "23": [
+      "apps_api_src_catalog_catalog_module_catalogmodule"
+    ],
+    "24": [
+      "apps_api_src_catalog_catalog_service_catalogservice"
+    ],
+    "25": [
+      "apps_api_src_catalog_embedding_service_embeddingservice"
+    ],
+    "26": [
+      "apps_api_src_chat_chat_controller_chatcontroller"
+    ],
+    "27": [
+      "apps_api_src_chat_chat_module_chatmodule"
+    ],
+    "28": [
+      "apps_api_src_chat_chat_service_chatservice"
+    ],
+    "29": [
+      "apps_api_src_common_guards_admin_role_guard_adminroleguard"
+    ],
+    "30": [
+      "apps_api_src_common_guards_jwt_auth_guard_jwtauthguard"
+    ],
+    "31": [
+      "apps_api_src_common_redis_module_redismodule"
+    ],
+    "32": [
+      "apps_api_src_common_schemas_admin_user_schema_adminuser"
+    ],
+    "33": [
+      "apps_api_src_common_schemas_admin_user_schema_adminuserdocument"
+    ],
+    "34": [
+      "apps_api_src_common_schemas_catalog_schema_servicecatalog"
+    ],
+    "35": [
+      "apps_api_src_common_schemas_catalog_schema_servicecatalogdocument"
+    ],
+    "36": [
+      "apps_api_src_common_schemas_complaint_schema_complaint"
+    ],
+    "37": [
+      "apps_api_src_common_schemas_complaint_schema_complaintdocument"
+    ],
+    "38": [
+      "apps_api_src_common_schemas_complaint_status_update_schema_complaintstatusupdate"
+    ],
+    "39": [
+      "apps_api_src_common_schemas_complaint_status_update_schema_complaintstatusupdatedocument"
+    ],
+    "40": [
+      "apps_api_src_common_schemas_conversation_schema_conversation"
+    ],
+    "41": [
+      "apps_api_src_common_schemas_conversation_schema_conversationdocument"
+    ],
+    "42": [
+      "apps_api_src_common_schemas_feedback_schema_feedback"
+    ],
+    "43": [
+      "apps_api_src_common_schemas_feedback_schema_feedbackdocument"
+    ],
+    "44": [
+      "apps_api_src_common_schemas_message_schema_message"
+    ],
+    "45": [
+      "apps_api_src_common_schemas_message_schema_messagedocument"
+    ],
+    "46": [
+      "apps_api_src_common_schemas_scheme_schema_schemecatalog"
+    ],
+    "47": [
+      "apps_api_src_common_schemas_scheme_schema_schemecatalogdocument"
+    ],
+    "48": [
+      "apps_api_src_common_schemas_user_schema_user"
+    ],
+    "49": [
+      "apps_api_src_common_schemas_user_schema_userdocument"
+    ],
+    "50": [
+      "apps_api_src_complaints_complaints_controller_complaintscontroller"
+    ],
+    "51": [
+      "apps_api_src_complaints_complaints_module_complaintsmodule"
+    ],
+    "52": [
+      "apps_api_src_complaints_complaints_service_complaintsservice"
+    ],
+    "53": [
+      "apps_api_src_complaints_upload_service_uploadservice"
+    ],
+    "54": [
+      "apps_api_src_document_document_controller_documentcontroller"
+    ],
+    "55": [
+      "apps_api_src_document_document_module_documentmodule"
+    ],
+    "56": [
+      "apps_api_src_document_document_service_documentservice"
+    ],
+    "57": [
+      "apps_api_src_feedback_feedback_controller_feedbackcontroller"
+    ],
+    "58": [
+      "apps_api_src_feedback_feedback_module_feedbackmodule"
+    ],
+    "59": [
+      "apps_api_src_feedback_feedback_service_feedbackservice"
+    ],
+    "60": [
+      "apps_api_src_sentry_filter_sentryfilter"
+    ],
+    "61": [
+      "apps_web_app_api_ai_route_post"
+    ],
+    "62": [
+      "apps_web_app_locale_admin_components_complaintstab_complaintitem"
+    ],
+    "63": [
+      "apps_web_app_locale_admin_page_admindashboard"
+    ],
+    "64": [
+      "apps_web_app_locale_analytics_page_analyticspage"
+    ],
+    "65": [
+      "apps_web_app_locale_applications_page_applicationspage"
+    ],
+    "66": [
+      "apps_web_app_locale_chat_usechat_message"
+    ],
+    "67": [
+      "apps_web_app_locale_chat_usechat_usechat"
+    ],
+    "68": [
+      "apps_web_app_locale_layout_rootlayout"
+    ],
+    "69": [
+      "apps_web_app_locale_providers_providers"
+    ],
+    "70": [
+      "apps_web_components_chat_suggestedpromptslist_suggestedpromptslist"
+    ],
+    "71": [
+      "apps_web_components_shared_footer_footer"
+    ],
+    "72": [
+      "apps_web_components_shared_languagetoggle_languagetoggle"
+    ],
+    "73": [
+      "apps_web_components_shared_mobilenav_mobilenav"
+    ],
+    "74": [
+      "apps_web_components_shared_motionlayout_pagetransition"
+    ],
+    "75": [
+      "apps_web_components_shared_themeprovider_themeprovider"
+    ],
+    "76": [
+      "apps_web_components_ui_badge_badgeprops"
+    ],
+    "77": [
+      "apps_web_components_ui_button_buttonprops"
+    ],
+    "78": [
+      "apps_web_components_ui_empty_state_emptystateprops"
+    ],
+    "79": [
+      "apps_web_components_ui_input_inputprops"
+    ],
+    "80": [
+      "apps_web_components_ui_placeholderimage_placeholderimage"
+    ],
+    "81": [
+      "apps_web_components_ui_three_d_card_cardbody"
+    ],
+    "82": [
+      "apps_web_components_ui_three_d_card_cardcontainer"
+    ],
+    "83": [
+      "apps_web_components_ui_three_d_card_cardglare"
+    ],
+    "84": [
+      "apps_web_components_ui_three_d_card_carditem"
+    ],
+    "85": [
+      "apps_web_e2e_screenshots_dashboard_screenshot"
+    ],
+    "86": [
+      "apps_web_e2e_screenshots_home_screenshot"
+    ],
+    "87": [
+      "apps_web_instrumentation_register"
+    ],
+    "88": [
+      "apps_web_lib_usereducedmotion_usereducedmotion"
+    ],
+    "89": [
+      "apps_web_lib_utils_cn"
+    ],
+    "90": [
+      "apps_web_product_md_product"
+    ],
+    "91": [
+      "feature_ledger_hackathon"
+    ],
+    "92": [
+      "memory_bugs_known_issues"
+    ],
+    "93": [
+      "memory_business_rules"
+    ],
+    "94": [
+      "memory_how_to_run_md_devsetup"
+    ],
+    "95": [
+      "memory_readme_md_memory_system"
+    ],
+    "96": [
+      "packages_shared_types_index_catalogitem"
+    ],
+    "97": [
+      "packages_shared_types_index_chatmessage"
+    ],
+    "98": [
+      "packages_shared_types_index_complaint"
+    ],
+    "99": [
+      "packages_shared_types_index_user"
+    ],
+    "100": [
+      "security_md_owasp"
+    ],
+    "101": [
+      "task_management_api_cicd_railway_deploy"
+    ],
+    "102": [
+      "task_management_api_docker_compose_dev_yml_dev_infra"
+    ],
+    "103": [
+      "task_management_api_src_repositories_index_taskrepository"
+    ],
+    "104": [
+      "task_management_api_src_repositories_index_userrepository"
+    ],
+    "105": [
+      "task_management_api_src_services_index_authservice"
+    ],
+    "106": [
+      "task_management_api_src_services_index_taskservice"
+    ],
+    "107": [
+      "task_management_api_src_services_index_userservice"
+    ],
+    "108": [
+      "task_management_api_src_types_index_apiresponse"
+    ],
+    "109": [
+      "task_management_api_src_types_index_jwtpayload"
+    ],
+    "110": [
+      "task_management_api_src_types_index_paginatedresponse"
+    ],
+    "111": [
+      "task_management_api_src_types_index_task"
+    ],
+    "112": [
+      "task_management_api_src_types_index_taskfilters"
+    ],
+    "113": [
+      "task_management_api_src_types_index_taskwithuser"
+    ],
+    "114": [
+      "task_management_api_src_types_index_user"
+    ],
+    "115": [
+      "task_management_api_src_types_index_validationerror"
+    ],
+    "116": [
+      "task_management_api_src_validators_schemas_createtaskinput"
+    ],
+    "117": [
+      "task_management_api_src_validators_schemas_logininput"
+    ],
+    "118": [
+      "task_management_api_src_validators_schemas_refreshtokeninput"
+    ],
+    "119": [
+      "task_management_api_src_validators_schemas_registerinput"
+    ],
+    "120": [
+      "task_management_api_src_validators_schemas_taskqueryinput"
+    ],
+    "121": [
+      "task_management_api_src_validators_schemas_updatetaskinput"
+    ],
+    "122": [
+      "task_router_md_task_router"
+    ]
+  },
+  "cohesion": {
+    "0": 0.2222222222222222,
+    "1": 0.3333333333333333,
+    "2": 0.3333333333333333,
+    "3": 0.4,
+    "4": 0.4,
+    "5": 0.5,
+    "6": 0.5,
+    "7": 1.0,
+    "8": 1.0,
+    "9": 1.0,
+    "10": 1.0,
+    "11": 1.0,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 1.0,
+    "23": 1.0,
+    "24": 1.0,
+    "25": 1.0,
+    "26": 1.0,
+    "27": 1.0,
+    "28": 1.0,
+    "29": 1.0,
+    "30": 1.0,
+    "31": 1.0,
+    "32": 1.0,
+    "33": 1.0,
+    "34": 1.0,
+    "35": 1.0,
+    "36": 1.0,
+    "37": 1.0,
+    "38": 1.0,
+    "39": 1.0,
+    "40": 1.0,
+    "41": 1.0,
+    "42": 1.0,
+    "43": 1.0,
+    "44": 1.0,
+    "45": 1.0,
+    "46": 1.0,
+    "47": 1.0,
+    "48": 1.0,
+    "49": 1.0,
+    "50": 1.0,
+    "51": 1.0,
+    "52": 1.0,
+    "53": 1.0,
+    "54": 1.0,
+    "55": 1.0,
+    "56": 1.0,
+    "57": 1.0,
+    "58": 1.0,
+    "59": 1.0,
+    "60": 1.0,
+    "61": 1.0,
+    "62": 1.0,
+    "63": 1.0,
+    "64": 1.0,
+    "65": 1.0,
+    "66": 1.0,
+    "67": 1.0,
+    "68": 1.0,
+    "69": 1.0,
+    "70": 1.0,
+    "71": 1.0,
+    "72": 1.0,
+    "73": 1.0,
+    "74": 1.0,
+    "75": 1.0,
+    "76": 1.0,
+    "77": 1.0,
+    "78": 1.0,
+    "79": 1.0,
+    "80": 1.0,
+    "81": 1.0,
+    "82": 1.0,
+    "83": 1.0,
+    "84": 1.0,
+    "85": 1.0,
+    "86": 1.0,
+    "87": 1.0,
+    "88": 1.0,
+    "89": 1.0,
+    "90": 1.0,
+    "91": 1.0,
+    "92": 1.0,
+    "93": 1.0,
+    "94": 1.0,
+    "95": 1.0,
+    "96": 1.0,
+    "97": 1.0,
+    "98": 1.0,
+    "99": 1.0,
+    "100": 1.0,
+    "101": 1.0,
+    "102": 1.0,
+    "103": 1.0,
+    "104": 1.0,
+    "105": 1.0,
+    "106": 1.0,
+    "107": 1.0,
+    "108": 1.0,
+    "109": 1.0,
+    "110": 1.0,
+    "111": 1.0,
+    "112": 1.0,
+    "113": 1.0,
+    "114": 1.0,
+    "115": 1.0,
+    "116": 1.0,
+    "117": 1.0,
+    "118": 1.0,
+    "119": 1.0,
+    "120": 1.0,
+    "121": 1.0,
+    "122": 1.0
+  },
+  "gods": [
+    {
+      "id": "readme_civicai_platform",
+      "label": "CivicAI Platform",
+      "degree": 6
+    },
+    {
+      "id": "readme_ai_chat",
+      "label": "AI-Powered Chat (Multi-Provider)",
+      "degree": 6
+    },
+    {
+      "id": "task_management_api_src_utils_errors_apperror",
+      "label": "AppError",
+      "degree": 5
+    },
+    {
+      "id": "readme_mongodb_atlas",
+      "label": "MongoDB Atlas (Vector Search)",
+      "degree": 5
+    },
+    {
+      "id": "readme_complaint_management",
+      "label": "Complaint Management",
+      "degree": 4
+    },
+    {
+      "id": "readme_scheme_discovery",
+      "label": "Scheme Discovery (Semantic Search)",
+      "degree": 4
+    },
+    {
+      "id": "readme_security_otp_auth",
+      "label": "OTP Authentication (MSG91 + Redis + JWT)",
+      "degree": 3
+    },
+    {
+      "id": "readme_redis",
+      "label": "Redis (Sessions, OTP, BullMQ)",
+      "degree": 3
+    },
+    {
+      "id": "readme_voyage_ai_embeddings",
+      "label": "Voyage AI Embeddings",
+      "degree": 3
+    },
+    {
+      "id": "memory_architecture_chat_flow",
+      "label": "Chat RAG Data Flow (SSE Streaming)",
+      "degree": 3
+    }
+  ],
+  "surprises": [
+    {
+      "source": "Task Management API (Secondary Service)",
+      "target": "CivicAI Platform",
+      "source_files": [
+        "task-management-api/README.md",
+        "README.md"
+      ],
+      "confidence": "AMBIGUOUS",
+      "relation": "conceptually_related_to",
+      "why": "ambiguous connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities; peripheral node `Task Management API (Secondary Service)` unexpectedly reaches hub `CivicAI Platform`"
+    },
+    {
+      "source": "E2E Screenshot: Chat Page Desktop",
+      "target": "AI-Powered Chat (Multi-Provider)",
+      "source_files": [
+        "apps/web/e2e/screenshots/_en_chat_desktop.png",
+        "README.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc ↔ image); connects across different repos/directories; peripheral node `E2E Screenshot: Chat Page Desktop` unexpectedly reaches hub `AI-Powered Chat (Multi-Provider)`"
+    },
+    {
+      "source": "E2E Screenshot: Complaints Page Desktop",
+      "target": "Complaint Management",
+      "source_files": [
+        "apps/web/e2e/screenshots/_en_complaints_desktop.png",
+        "README.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc ↔ image); connects across different repos/directories"
+    },
+    {
+      "source": "E2E Screenshot: Schemes Page Desktop",
+      "target": "Scheme Discovery (Semantic Search)",
+      "source_files": [
+        "apps/web/e2e/screenshots/_en_schemes_desktop.png",
+        "README.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "conceptually_related_to",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (doc ↔ image); connects across different repos/directories"
+    },
+    {
+      "source": "GitHub Actions CI Pipeline",
+      "target": "CivicAI Platform",
+      "source_files": [
+        ".github/workflows/ci.yml",
+        "README.md"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `GitHub Actions CI Pipeline` unexpectedly reaches hub `CivicAI Platform`"
+    }
+  ],
+  "questions": [
+    {
+      "type": "ambiguous_edge",
+      "question": "What is the exact relationship between `CivicAI Platform` and `Task Management API (Secondary Service)`?",
+      "why": "Edge tagged AMBIGUOUS (relation: conceptually_related_to) - confidence is low."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `CivicAI Platform` connect `Complaint Management` to `CivicAI Platform & Architecture`, `CivicAI Platform & Architecture`, `CivicAI Platform & Architecture`?",
+      "why": "High betweenness centrality (0.011) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `AI-Powered Chat (Multi-Provider)` connect `CivicAI Platform & Architecture` to `Complaint Management`?",
+      "why": "High betweenness centrality (0.008) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `MongoDB Atlas (Vector Search)` connect `Complaint Management` to `CivicAI Platform & Architecture`, `CivicAI Platform & Architecture`?",
+      "why": "High betweenness centrality (0.005) - this node is a cross-community bridge."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 2 inferred relationships involving `AI-Powered Chat (Multi-Provider)` (e.g. with `E2E Screenshot: Chat Page Desktop` and `Chat RAG Data Flow (SSE Streaming)`) actually correct?",
+      "why": "`AI-Powered Chat (Multi-Provider)` has 2 INFERRED edges - model-reasoned connections that need verification."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `AdminJwtAuthGuard`, `AdminJwtStrategy`, `AdminController` to the rest of the system?",
+      "why": "140 weakly-connected nodes found - possible documentation gaps or missing edges."
+    }
+  ]
+}

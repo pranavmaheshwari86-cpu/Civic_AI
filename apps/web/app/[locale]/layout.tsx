@@ -1,23 +1,22 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
 import Providers from "./providers";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/shared/ThemeProvider";
-import { Header } from "@/components/shared/Header";
-import { Footer } from "@/components/shared/Footer";
+import { AppLayout } from "@/components/shared/AppLayout";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-plus-jakarta",
 });
 
 export const metadata: Metadata = {
@@ -35,9 +34,9 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} suppressHydrationWarning className={cn("font-sans", geistSans.variable)}>
+    <html lang={locale} suppressHydrationWarning className={cn("font-sans", inter.variable, plusJakarta.variable)}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+        className={`${inter.variable} ${plusJakarta.variable} antialiased min-h-screen flex flex-col font-sans`}
       >
         <NextIntlClientProvider messages={messages}>
           <Providers>
@@ -47,9 +46,9 @@ export default async function RootLayout({
               enableSystem
               disableTransitionOnChange
             >
-              <Header />
-              <main className="flex-1">{children}</main>
-              <Footer />
+              <AppLayout>
+                {children}
+              </AppLayout>
             </ThemeProvider>
           </Providers>
         </NextIntlClientProvider>

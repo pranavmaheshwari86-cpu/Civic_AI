@@ -1,0 +1,17 @@
+{
+  "status": "commited",
+  "type": "backend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:3000",
+  "executionArgs": {
+    "projectName": "api",
+    "projectPath": "c:\\Users\\Pranav\\Desktop\\Devengers\\apps\\api",
+    "testIds": [],
+    "additionalInstruction": "",
+    "serverMode": "development",
+    "envs": {
+      "API_KEY": "sk-user-7_BZ1xQtlxSrN5MtPriMqKkg7Lw3vepqlPypzaBP0VB94oOPQGGOBlSHD0ZkjmYO3ujc-KDxVw-wK4bnfVzpg7fhSy8Nn2NdSkhgpehOwqO_j2OfA_WwOiBTSm6On7RjDjU"
+    }
+  },
+  "serverPort": 61251
+}

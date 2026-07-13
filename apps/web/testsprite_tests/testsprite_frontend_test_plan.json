@@ -1,0 +1,268 @@
+[
+  {
+    "id": "TC001",
+    "title": "Sign in with valid credentials",
+    "description": "A citizen can submit valid credentials and arrive at the authenticated dashboard.",
+    "category": "User Login",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the authenticated dashboard is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify personalized dashboard content is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "Block dashboard access without authentication",
+    "description": "An unauthenticated visitor is prevented from viewing protected dashboard content and is prompted to log in again.",
+    "category": "Citizen Dashboard",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify protected content is not displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a prompt to log in again is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "View the login form",
+    "description": "A visitor can open the login page and see the authentication form.",
+    "category": "User Login",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the login form is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify email and password inputs are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "View the landing page introduction",
+    "description": "An anonymous visitor can load the landing page and see the platform introduction content.",
+    "category": "Landing Page",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the landing page introduction is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify primary navigation or entry points are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "Return to the landing page from an unknown route",
+    "description": "A visitor who opens an unknown URL sees a 404 page and can get back to the landing page.",
+    "category": "Landing Page",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /unknown-page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a 404 page is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a way back to the landing page is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "View the dashboard after authentication",
+    "description": "An authenticated citizen can open the dashboard and see personalized government service content.",
+    "category": "Citizen Dashboard",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the dashboard entry point"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify personalized dashboard content is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify government service guidance or discovery content is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC007",
+    "title": "Reach login from the landing page",
+    "description": "An anonymous visitor can use the landing page to navigate to the login page.",
+    "category": "Landing Page",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to open the login page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the login form is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC008",
+    "title": "Use the landing page with accessible navigation",
+    "description": "An anonymous visitor can access the landing page with a high-contrast, keyboard-navigable experience.",
+    "category": "Landing Page",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Press Tab to move through the main navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify keyboard focus moves through interactive elements in a usable order"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the landing page content remains readable and accessible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC009",
+    "title": "Stay on login when credentials are invalid",
+    "description": "A visitor who submits invalid credentials sees login feedback and remains on the login page.",
+    "category": "User Login",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with invalid@example.com"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with incorrect-password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a login validation or authentication error is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the login form remains displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC010",
+    "title": "Keep login controls valid and usable while signing in",
+    "description": "A visitor sees the login form support a polished sign-in experience while submitting credentials.",
+    "category": "User Login",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the login submission state is reflected in the UI"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user can complete sign in from the login form"
+      }
+    ],
+    "priority": "Medium"
+  }
+]

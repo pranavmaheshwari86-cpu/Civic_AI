@@ -32,7 +32,7 @@ export class CatalogService {
       .lean();
 
     return {
-      results: results.map((r) => ({
+      services: results.map((r) => ({
         serviceId: r._id,
         serviceName: r.serviceName,
         description: lang === 'hi' ? r.description.hi : r.description.en,

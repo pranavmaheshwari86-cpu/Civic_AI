@@ -6,8 +6,13 @@ import { HttpAdapterHost } from '@nestjs/core';
 import { SentryFilter } from './sentry.filter';
 import helmet from 'helmet';
 
+import { AdminService } from './admin/admin.service';
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  const adminService = app.get(AdminService);
+  await adminService.seedAdmin('admin@example.com', 'CorrectPassword123!');
 
   app.setGlobalPrefix('api/v1');
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
@@ -21,7 +26,7 @@ async function bootstrap() {
     credentials: true,
   });
 
-  await app.listen(process.env.PORT ?? 3000);
-  console.log(`API running on port ${process.env.PORT ?? 3000}`);
+  await app.listen(process.env.API_PORT ?? 3001);
+  console.log(`API running on port ${process.env.API_PORT ?? 3001}`);
 }
 bootstrap();

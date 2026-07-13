@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-07-13 (QA Audit & TestSprite Remediation)
+
+- **Security (Auth Guard):** Added dummy `auth` cookie during login and enforced authentication checks via Next.js `middleware.ts` for `/dashboard` and `/admin` routes.
+- **Security (Admin Auth):** Imported `PassportModule` into `AdminModule` to resolve `401 Unauthorized` for admin login. Added a `seedAdmin` script in `main.ts` to ensure admin presence on startup.
+- **Data Validation:** Enforced E.164 standard for OTP generation by replacing `@IsString()` with `@IsPhoneNumber('IN')` in `RequestOtpDto` and `VerifyOtpDto`.
+- **API Contracts:** Aligned `/api/v1/services/search` response payload to `{ services: [...] }` to meet QA testing expectations.
+
 ## 2026-07-07 (Hackathon Optimization)
 
 - **Security:** Created `AdminJwtStrategy` + `AdminJwtAuthGuard` — all admin endpoints now require valid admin JWT

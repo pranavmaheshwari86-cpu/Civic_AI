@@ -1,0 +1,120 @@
+version: "2"
+type: backend
+tech_stack:
+  - TypeScript
+  - NestJS
+  - Mongoose
+  - Redis (BullMQ)
+routes:
+  - path: /api/v1/healthz
+    file: src/app.controller.ts
+    auth_required: false
+    description: Health check endpoint
+  - path: /api/v1/auth/otp/request
+    file: src/auth/auth.controller.ts
+    auth_required: false
+    description: Request OTP for a phone number
+  - path: /api/v1/auth/otp/verify
+    file: src/auth/auth.controller.ts
+    auth_required: false
+    description: Verify OTP
+  - path: /api/v1/auth/logout
+    file: src/auth/auth.controller.ts
+    auth_required: false
+    description: Logout and clear refresh cookie
+  - path: /api/v1/chat/message
+    file: src/chat/chat.controller.ts
+    auth_required: false
+    description: Send message, get streamed AI response
+  - path: /api/v1/chat/conversations/:id
+    file: src/chat/chat.controller.ts
+    auth_required: true
+    description: Get conversation with messages
+  - path: /api/v1/complaints
+    file: src/complaints/complaints.controller.ts
+    auth_required: true
+    description: File a new complaint
+  - path: /api/v1/complaints/upload-url
+    file: src/complaints/complaints.controller.ts
+    auth_required: true
+    description: Get upload URL for complaints
+  - path: /api/v1/complaints/my
+    file: src/complaints/complaints.controller.ts
+    auth_required: true
+    description: Get my complaints
+  - path: /api/v1/complaints/:id
+    file: src/complaints/complaints.controller.ts
+    auth_required: false
+    description: Check complaint status
+  - path: /api/v1/services/search
+    file: src/catalog/catalog.controller.ts
+    auth_required: false
+    description: Search services by keyword
+  - path: /api/v1/schemes/match
+    file: src/catalog/catalog.controller.ts
+    auth_required: false
+    description: Match eligible schemes
+  - path: /api/v1/admin/auth/login
+    file: src/admin/admin.controller.ts
+    auth_required: false
+    description: Admin login
+  - path: /api/v1/admin/catalog/services
+    file: src/admin/admin.controller.ts
+    auth_required: true
+    description: Admin catalog services list and create
+  - path: /api/v1/admin/catalog/services/:id
+    file: src/admin/admin.controller.ts
+    auth_required: true
+    description: Admin catalog services update and delete
+  - path: /api/v1/admin/complaints
+    file: src/admin/admin.controller.ts
+    auth_required: true
+    description: Admin complaints list
+  - path: /api/v1/admin/complaints/:id/status
+    file: src/admin/admin.controller.ts
+    auth_required: true
+    description: Admin complaints status update
+  - path: /api/v1/feedback
+    file: src/feedback/feedback.controller.ts
+    auth_required: false
+    description: Submit feedback on an AI response
+  - path: /api/v1/document/process
+    file: src/document/document.controller.ts
+    auth_required: false
+    description: Process document
+features:
+  - name: Request OTP
+    description: Request OTP for authentication
+    files:
+      - src/auth/auth.controller.ts
+      - src/auth/auth.service.ts
+    entry_route: /api/v1/auth/otp/request
+    user_interactions:
+      - Submit phone number
+    api_calls:
+      - method: POST
+        endpoint: /api/v1/auth/otp/request
+    auth_required: false
+  - name: Admin Login
+    description: Login with email and password credentials
+    files:
+      - src/admin/admin.controller.ts
+    entry_route: /api/v1/admin/auth/login
+    user_interactions:
+      - Submit email and password
+    api_calls:
+      - method: POST
+        endpoint: /api/v1/admin/auth/login
+    auth_required: false
+  - name: Search Services
+    description: Search for services in the catalog
+    files:
+      - src/catalog/catalog.controller.ts
+    entry_route: /api/v1/services/search
+    user_interactions:
+      - Send search query
+    api_calls:
+      - method: GET
+        endpoint: /api/v1/services/search
+    auth_required: false
+known_limitations: []

@@ -4,7 +4,7 @@ import { IsString, IsPhoneNumber } from 'class-validator';
 import { Response } from 'express';
 
 class RequestOtpDto {
-  @IsString()
+  @IsPhoneNumber('IN', { message: 'Invalid phone number' })
   phone: string;
 }
 

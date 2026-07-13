@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-12T19:57:00Z",
+  "title": "Design System: Civic AI",
+  "extensions": {
+    "colorMeta": {
+      "primary": { "role": "primary", "displayName": "Deep Civic Blue", "canonical": "#1a146b", "tonalRamp": ["#0b082d", "#1a146b", "#312e81", "#3e3c8f", "#5654a8", "#c3c0ff", "#e2dfff", "#ffffff"] },
+      "secondary": { "role": "secondary", "displayName": "Action Blue", "canonical": "#0051d5", "tonalRamp": ["#00174b", "#002a78", "#003ea8", "#0051d5", "#316bf3", "#b4c5ff", "#dbe1ff", "#ffffff"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headlines on major entry points." },
+      "headline": { "displayName": "Headline", "purpose": "Section headers and major page divisions." }
+    },
+    "shadows": [
+      { "name": "ambient", "value": "0 12px 34px -10px rgba(15, 23, 42, 0.08)", "purpose": "Used for primary floating panels and major structural separations." },
+      { "name": "premium", "value": "0 4px 20px -2px rgba(14, 16, 61, 0.05)", "purpose": "Used for interactive cards and components that elevate on hover." }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Default easing for state transitions." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary action button.",
+      "html": "<button class=\"ds-btn-primary\">LAUNCH PORTAL</button>",
+      "css": ".ds-btn-primary { background: #1a146b; color: #ffffff; padding: 12px 24px; font-family: Inter, sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.01em; border: none; border-radius: 8px; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; } .ds-btn-primary:hover { transform: scale(1.02); box-shadow: 0 4px 20px -2px rgba(14, 16, 61, 0.05); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Modern Public Pillar",
+    "overview": "Civic AI presents government services with the fidelity of a top-tier consumer tech product. The aesthetic is premium, futuristic, and highly polished, moving away from cluttered legacy portals and generic SaaS dashboards. The design language emphasizes clarity, elevated functionality through micro-interactions, and a sense of trust and authority.",
+    "keyCharacteristics": [
+      "Elevated functionality with premium depth.",
+      "High clarity and typographic rigor.",
+      "Purposeful motion, avoiding gratuitous decoration.",
+      "AI features integrated natively, not bolted on."
+    ],
+    "rules": [
+      { "name": "The Authority Rule", "body": "Backgrounds remain clean (Paper White or very subtle tints). High saturation is reserved for action and identity.", "section": "colors" },
+      { "name": "The Legibility First Rule", "body": "All body text must maintain a strict 4.5:1 contrast ratio. Do not use light gray text on light gray backgrounds.", "section": "typography" },
+      { "name": "The Functional Depth Rule", "body": "Shadows define structural layers (modals, dropdowns) and interaction states (hover). They are not used for pure decoration.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use solid colors for typography to ensure legibility and a premium feel.",
+      "Do maintain a clean, high-contrast visual hierarchy.",
+      "Do use motion purposefully for state changes and subtle reveals."
+    ],
+    "donts": [
+      "Don't use gradient text on headings (a common AI tell).",
+      "Don't overuse glassmorphism as a default background for everything; reserve it for elevated panels.",
+      "Don't rely on oversized, disconnected floating orbs as primary visuals without grounding them in the UI context.",
+      "Don't use generic SaaS clichés like the tiny uppercase tracked eyebrow above every section."
+    ]
+  }
+}

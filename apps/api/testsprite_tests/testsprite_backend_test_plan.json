@@ -1,0 +1,17 @@
+[
+  {
+    "id": "TC001",
+    "title": "post api v1 auth otp request with valid and invalid phone numbers",
+    "description": "Test POST /api/v1/auth/otp/request endpoint with valid phone numbers to receive 200 confirmation and with invalid or malformed phone numbers to receive 400 validation errors."
+  },
+  {
+    "id": "TC002",
+    "title": "post api v1 admin auth login with valid and invalid credentials",
+    "description": "Test POST /api/v1/admin/auth/login endpoint using valid admin email and password to receive 200 with session token, and invalid or missing credentials to receive 401 unauthorized or 400 validation errors."
+  },
+  {
+    "id": "TC003",
+    "title": "get api v1 services search with valid and invalid queries",
+    "description": "Test GET /api/v1/services/search endpoint with relevant keyword queries to receive 200 with matching services, and with empty or unsupported queries to receive 400 validation error or 200 with no matches."
+  }
+]
