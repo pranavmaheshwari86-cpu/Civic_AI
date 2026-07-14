@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Civic AI - The Future of Digital Public Services</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error": "#ba1a1a",
+                      "secondary-fixed": "#dbe1ff",
+                      "on-tertiary-fixed-variant": "#70380b",
+                      "secondary": "#0051d5",
+                      "on-secondary-fixed-variant": "#003ea8",
+                      "surface-variant": "#e5e1e9",
+                      "secondary-container": "#316bf3",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-container": "#5f2b00",
+                      "error-container": "#ffdad6",
+                      "on-background": "#1b1b21",
+                      "surface": "#fcf8ff",
+                      "on-surface": "#1b1b21",
+                      "tertiary-fixed-dim": "#ffb688",
+                      "on-secondary-fixed": "#00174b",
+                      "outline-variant": "#c8c5d3",
+                      "outline": "#777682",
+                      "surface-container-low": "#f6f2fa",
+                      "surface-container-highest": "#e5e1e9",
+                      "secondary-fixed-dim": "#b4c5ff",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-fixed": "#311300",
+                      "on-primary-fixed-variant": "#3e3c8f",
+                      "on-secondary-container": "#fefcff",
+                      "surface-tint": "#5654a8",
+                      "inverse-surface": "#303036",
+                      "on-primary-container": "#9c9af4",
+                      "on-primary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "primary-container": "#312e81",
+                      "inverse-on-surface": "#f3eff7",
+                      "on-tertiary-container": "#de915e",
+                      "surface-container": "#f0ecf4",
+                      "tertiary-fixed": "#ffdbc7",
+                      "surface-dim": "#dcd9e0",
+                      "tertiary": "#3e1a00",
+                      "on-surface-variant": "#474651",
+                      "primary-fixed": "#e2dfff",
+                      "inverse-primary": "#c3c0ff",
+                      "primary": "#1a146b",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed-dim": "#c3c0ff",
+                      "surface-bright": "#fcf8ff",
+                      "background": "#fcf8ff",
+                      "surface-container-high": "#eae7ef",
+                      "on-primary-fixed": "#100563"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "base": "4px",
+                      "md": "24px",
+                      "sm": "16px",
+                      "xl": "64px",
+                      "xs": "8px",
+                      "lg": "40px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "display-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-lg-mobile": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 12px 34px -10px rgba(15, 23, 42, 0.08);
+        }
+        
+        .fractal-pattern {
+            background-image: radial-gradient(rgba(26, 20, 107, 0.03) 1px, transparent 1px),
+            radial-gradient(rgba(26, 20, 107, 0.03) 1px, transparent 1px);
+            background-position: 0 0, 20px 20px;
+            background-size: 40px 40px;
+        }
+
+        .ai-aura {
+            position: relative;
+        }
+        .ai-aura::before {
+            content: '';
+            position: absolute;
+            top: -20%; left: -20%; right: -20%; bottom: -20%;
+            background: radial-gradient(circle, rgba(0, 81, 213, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse-aura 4s ease-in-out infinite alternate;
+            z-index: -1;
+        }
+
+        @keyframes pulse-aura {
+            0% { transform: scale(0.9); opacity: 0.5; }
+            100% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #1a146b 0%, #0051d5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col fractal-pattern">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl border-b border-outline-variant/30 dark:border-outline/20 shadow-sm dark:shadow-none transition-all duration-300">
+<div class="flex justify-between items-center h-16 px-gutter max-w-container-max mx-auto">
+<!-- Brand Logo -->
+<div class="flex items-center gap-xs cursor-pointer">
+<span class="material-symbols-outlined text-primary" data-weight="fill" style="font-variation-settings: 'FILL' 1;">assured_workload</span>
+<span class="text-headline-md font-headline-md font-bold tracking-tight text-primary dark:text-primary-fixed">Civic AI</span>
+</div>
+<!-- Navigation Links (Desktop) -->
+<nav class="hidden md:flex items-center gap-md font-display-lg text-body-md font-body-md">
+<a class="text-secondary font-semibold border-b-2 border-secondary pb-1 transition-colors" href="#">Dashboard</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-primary transition-colors hover:bg-surface-container-low/50 dark:hover:bg-surface-container-high/20 rounded-lg px-3 py-2 transition-all duration-300 ease-in-out hover:scale-[1.02] active:scale-95" href="#">Schemes</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-primary transition-colors hover:bg-surface-container-low/50 dark:hover:bg-surface-container-high/20 rounded-lg px-3 py-2 transition-all duration-300 ease-in-out hover:scale-[1.02] active:scale-95" href="#">Complaints</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-primary transition-colors hover:bg-surface-container-low/50 dark:hover:bg-surface-container-high/20 rounded-lg px-3 py-2 transition-all duration-300 ease-in-out hover:scale-[1.02] active:scale-95" href="#">Support</a>
+</nav>
+<!-- Search & Actions -->
+<div class="flex items-center gap-sm">
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-on-surface-variant hover:text-primary p-2 rounded-full hover:bg-surface-container-low/50 transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Trailing Icons -->
+<div class="hidden sm:flex items-center gap-xs text-primary dark:text-primary-fixed-dim">
+<button aria-label="notifications" class="p-2 rounded-full hover:bg-surface-container-low/50 dark:hover:bg-surface-container-high/20 transition-all duration-300 ease-in-out hover:scale-[1.02] active:scale-95">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button aria-label="account_circle" class="p-2 rounded-full hover:bg-surface-container-low/50 dark:hover:bg-surface-container-high/20 transition-all duration-300 ease-in-out hover:scale-[1.02] active:scale-95">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow pt-[104px] pb-xl flex flex-col gap-xl">
+<!-- Hero Section -->
+<section class="max-w-container-max mx-auto w-full px-gutter relative pt-md pb-xl">
+<!-- Background Elements -->
+<div class="absolute inset-0 z-0 pointer-events-none overflow-hidden flex justify-center items-center">
+<div class="w-[800px] h-[800px] rounded-full bg-gradient-to-tr from-primary-fixed/30 to-secondary-fixed/30 blur-3xl opacity-50 absolute top-[-20%] right-[-10%]"></div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-xl items-center relative z-10">
+<!-- Hero Text -->
+<div class="flex flex-col gap-md">
+<div class="flex items-center gap-xs">
+<span class="bg-primary/10 text-primary font-label-sm text-label-sm px-3 py-1 rounded-full border border-primary/20 uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">public</span>
+                            Built for India
+                        </span>
+</div>
+<h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg text-on-surface">
+                        The Future of <br/>
+<span class="gradient-text">Digital Public Services</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-[500px]">
+                        Empowering every citizen with AI-driven insights, schemes, and seamless governance. Experience the next generation of civic interaction.
+                    </p>
+<div class="flex flex-wrap items-center gap-sm mt-sm">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-6 py-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:scale-[1.02] active:scale-95 flex items-center gap-2">
+                            Launch Citizen Portal
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<button class="bg-transparent text-secondary font-label-md text-label-md px-6 py-3 rounded-lg border border-secondary transition-all duration-300 hover:bg-secondary/5 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">play_circle</span>
+                            See How it Works
+                        </button>
+</div>
+<!-- Trust Indicators -->
+<div class="mt-lg flex items-center gap-md text-on-surface-variant opacity-70">
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-primary">50M+</span>
+<span class="font-label-sm text-label-sm uppercase">Citizens Served</span>
+</div>
+<div class="w-px h-10 bg-outline-variant/50"></div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-primary">0.2s</span>
+<span class="font-label-sm text-label-sm uppercase">AI Response Time</span>
+</div>
+</div>
+</div>
+<!-- Hero Visual -->
+<div class="relative w-full aspect-square md:aspect-[4/3] flex justify-center items-center ai-aura">
+<div class="w-full h-full glass-panel rounded-[2rem] overflow-hidden relative shadow-2xl p-4 flex items-center justify-center bg-gradient-to-br from-white/60 to-white/20">
+<!-- The AI Orb Placeholder / Floating Visual -->
+<img class="w-full h-full object-cover rounded-xl" data-alt="A pristine, glowing AI orb floating organically in a clean, brightly lit, modernist architectural space. The orb emits a soft blue and indigo aura. The environment is minimalist, featuring smooth white curves and glass elements, creating a sense of advanced technology serving humanity. High quality, photorealistic, cinematic lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgYISmgxVXv77yGRk9AeyK8lUpOigM2OKjxlxelmik4J2tEJWRivg52zNERz99LNcpDOZSSVNVlWqsL9ZxWhAyVxYxysmnkVwVvQBezc-kcjUGyidtBCUHQDuqk4orOMk0cnSg73A3ccal_chSZ1fatfww3rAcOww1tXr1mM-eVuNVgKP-uswN1vsbUtEUayIXsztyGNVoHZsJsTvBc2YBwxkWmIgh_AciYzwCY1ICO_RjnwxiWLbM" style="mix-blend-mode: multiply;"/>
+<!-- Floating UI Elements over image -->
+<div class="absolute top-8 right-8 glass-panel rounded-lg p-3 flex items-center gap-3 animate-pulse shadow-lg">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined">verified_user</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">Identity Verified</span>
+<span class="font-body-md text-[10px] text-on-surface-variant">Instant Aadhaar Sync</span>
+</div>
+</div>
+<div class="absolute bottom-8 left-8 glass-panel rounded-lg p-3 flex items-center gap-3 shadow-lg" style="animation: pulse-aura 3s ease-in-out infinite alternate-reverse;">
+<div class="w-10 h-10 rounded-full bg-[#e8f5e9] text-[#2e7d32] flex items-center justify-center">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface">Scheme Found</span>
+<span class="font-body-md text-[10px] text-on-surface-variant">PM Kisan Samman</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="max-w-container-max mx-auto w-full px-gutter py-xl">
+<div class="text-center mb-xl max-w-[600px] mx-auto">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-sm">Intelligent Governance</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Seamlessly integrated services designed to reduce friction and bring government closer to you.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md auto-rows-[250px]">
+<!-- Feature 1: Wide -->
+<div class="md:col-span-2 glass-panel rounded-2xl p-lg flex flex-col justify-between relative overflow-hidden group hover:shadow-lg transition-all duration-300">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4"></div>
+<div class="z-10">
+<div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-[24px]">model_training</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">AI-Powered Schemes</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[400px]">Personalized government scheme recommendations based on your unique profile and eligibility, analyzed in real-time.</p>
+</div>
+</div>
+<!-- Feature 2: Square -->
+<div class="glass-panel rounded-2xl p-lg flex flex-col justify-between relative overflow-hidden group hover:shadow-lg transition-all duration-300 bg-surface-container-lowest">
+<div class="z-10">
+<div class="w-12 h-12 rounded-xl bg-[#fff3e0] text-[#e65100] flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-[24px]">chat_bubble</span>
+</div>
+<h3 class="font-headline-md text-[20px] font-semibold text-on-surface mb-2">Smart Complaints</h3>
+<p class="font-body-md text-[14px] text-on-surface-variant">NLP-driven grievance routing ensures your voice reaches the right official instantly.</p>
+</div>
+</div>
+<!-- Feature 3: Square -->
+<div class="glass-panel rounded-2xl p-lg flex flex-col justify-between relative overflow-hidden group hover:shadow-lg transition-all duration-300 bg-surface-container-lowest">
+<div class="z-10">
+<div class="w-12 h-12 rounded-xl bg-[#e3f2fd] text-[#1565c0] flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-[24px]">fact_check</span>
+</div>
+<h3 class="font-headline-md text-[20px] font-semibold text-on-surface mb-2">Instant Verification</h3>
+<p class="font-body-md text-[14px] text-on-surface-variant">Zero-touch document validation linked securely with national databases.</p>
+</div>
+</div>
+<!-- Feature 4: Wide -->
+<div class="md:col-span-2 glass-panel rounded-2xl p-lg flex flex-col justify-between relative overflow-hidden group hover:shadow-lg transition-all duration-300 bg-gradient-to-r from-surface to-surface-container-low border border-outline-variant/30">
+<div class="absolute bottom-0 right-0 w-1/2 h-full opacity-10" style="background-image: repeating-linear-gradient(45deg, #1a146b 0, #1a146b 1px, transparent 0, transparent 50%); background-size: 10px 10px;"></div>
+<div class="z-10 flex flex-col h-full justify-center">
+<div class="w-12 h-12 rounded-xl bg-tertiary-container text-on-tertiary-container flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-[24px]">monitoring</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Real-time Analytics</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[400px]">Transparent tracking of application status and civic metrics at your fingertips.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Component from JSON -->
+<footer class="w-full py-xl mt-xl bg-surface-container-highest dark:bg-surface-container-low border-t border-outline-variant/50 flat no shadows font-body-md text-label-sm font-label-sm text-on-surface-variant dark:text-outline">
+<div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 items-center gap-md">
+<div class="flex flex-col gap-sm">
+<span class="font-headline-md text-headline-md text-primary dark:text-primary-fixed font-bold tracking-tight">Civic AI</span>
+<p>© 2024 Civic AI (Smart Bharat). Government of India Initiative.</p>
+</div>
+<div class="flex flex-wrap md:justify-end gap-md">
+<a class="text-on-surface-variant hover:text-primary hover:opacity-80 transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary hover:opacity-80 transition-opacity duration-200" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary hover:opacity-80 transition-opacity duration-200" href="#">Accessibility</a>
+<a class="text-on-surface-variant hover:text-primary hover:opacity-80 transition-opacity duration-200" href="#">Contact Us</a>
+</div>
+</div>
+</footer>
+</body></html>

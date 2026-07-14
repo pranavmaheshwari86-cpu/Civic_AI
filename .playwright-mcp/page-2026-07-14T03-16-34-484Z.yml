@@ -1,0 +1,36 @@
+- generic [active] [ref=f1e1]:
+  - banner [ref=f1e2]:
+    - generic [ref=f1e3]:
+      - link "🏛️ Civic AI" [ref=f1e5] [cursor=pointer]:
+        - /url: /en
+        - generic [ref=f1e6]: 🏛️
+        - generic [ref=f1e7]: Civic AI
+      - navigation [ref=f1e8]:
+        - link "Dashboard" [ref=f1e9] [cursor=pointer]:
+          - /url: /en/dashboard
+        - link "Schemes" [ref=f1e10] [cursor=pointer]:
+          - /url: /en/schemes
+        - link "Complaints" [ref=f1e11] [cursor=pointer]:
+          - /url: /en/complaints
+        - link "Support" [ref=f1e12] [cursor=pointer]:
+          - /url: /en/support
+      - generic [ref=f1e13]:
+        - button "Notifications" [ref=f1e14] [cursor=pointer]
+        - button "User Profile" [ref=f1e18] [cursor=pointer]
+  - main [ref=f1e38]:
+    - generic [ref=f1e40]:
+      - generic [ref=f1e41]:
+        - heading "Sign in" [level=1] [ref=f1e42]
+        - paragraph [ref=f1e43]: Enter your credentials to access the Citizen Portal
+      - generic [ref=f1e44]:
+        - generic [ref=f1e45]:
+          - generic [ref=f1e46]: Email
+          - textbox "name@example.com" [ref=f1e47]
+        - generic [ref=f1e48]:
+          - generic [ref=f1e49]: Password
+          - textbox "••••••••" [ref=f1e50]
+        - button "Sign in" [ref=f1e51] [cursor=pointer]
+        - link "Back to Home" [ref=f1e53] [cursor=pointer]:
+          - /url: /en
+  - contentinfo [ref=f1e54]:
+    - paragraph [ref=f1e56]: © 2026 CivicAI. All rights reserved.

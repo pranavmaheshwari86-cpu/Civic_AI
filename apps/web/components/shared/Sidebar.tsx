@@ -1,108 +1,92 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { 
-  Home, 
-  Lightbulb, 
-  FileText, 
-  Files, 
-  BarChart, 
-  Settings, 
-  HelpCircle,
-  Sparkles
-} from "lucide-react";
+import { useLocale } from "next-intl";
 import { cn } from "@/lib/utils";
 
 const navigation = [
-  { name: "Home", href: "/", icon: Home },
-  { name: "AI Insights", href: "/dashboard", icon: Lightbulb },
-  { name: "Schemes", href: "/schemes", icon: FileText },
-  { name: "Applications", href: "/applications", icon: Files },
-  { name: "Analytics", href: "/analytics", icon: BarChart },
+  { name: "Home", href: "/", icon: "dashboard" },
+  { name: "AI Insights", href: "/dashboard", icon: "temp_preferences_custom" },
+  { name: "Schemes", href: "/schemes", icon: "description" },
+  { name: "Applications", href: "/applications", icon: "assignment_turned_in" },
+  { name: "Analytics", href: "/analytics", icon: "leaderboard" },
 ];
 
 const secondaryNavigation = [
-  { name: "Settings", href: "/settings", icon: Settings },
-  { name: "Help", href: "/help", icon: HelpCircle },
+  { name: "Settings", href: "/settings", icon: "settings" },
+  { name: "Help", href: "/help", icon: "help_outline" },
 ];
 
 export function Sidebar() {
   const pathname = usePathname();
+  const locale = useLocale();
 
   return (
-    <div className="hidden lg:flex h-screen w-64 flex-col border-r border-border bg-card px-4 py-6 sticky top-0 shrink-0 shadow-sm z-40">
-      <Link href="/" className="flex items-center space-x-2 mb-8 px-2">
-        <span className="text-2xl">🏛️</span>
-        <span className="font-heading font-bold text-xl tracking-tight text-primary">Civic AI</span>
-      </Link>
-
-      <nav className="flex-1 space-y-1">
+    <aside className="hidden md:flex flex-col p-sm gap-base h-[calc(100vh-4rem)] w-72 sticky top-16 z-40 bg-surface-container-lowest dark:bg-surface-container-low border-r border-outline-variant/20 shadow-xl dark:shadow-none duration-200 ease-out overflow-y-auto">
+      <div className="px-sm mb-lg mt-4">
+        <h2 className="text-headline-md font-headline-md font-extrabold text-primary dark:text-primary-fixed">Civic AI</h2>
+        <p className="text-label-sm font-label-sm text-on-surface-variant">Citizen Portal</p>
+      </div>
+      
+      <nav className="flex-1 flex flex-col gap-2">
         {navigation.map((item) => {
-          const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
+          const itemPath = item.href === '/' ? `/${locale}` : `/${locale}${item.href}`;
+          const isActive = item.href === '/' 
+            ? pathname === itemPath 
+            : (pathname === itemPath || pathname.startsWith(`${itemPath}/`));
           return (
             <Link
               key={item.name}
-              href={item.href}
+              href={itemPath}
               className={cn(
-                "group flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all duration-200",
+                "flex items-center gap-3 px-sm py-3 rounded-xl group transition-all",
                 isActive
-                  ? "bg-primary/10 text-primary shadow-sm"
-                  : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
+                  ? "bg-secondary-container text-on-secondary-container font-bold hover:bg-secondary-fixed/10 dark:hover:bg-secondary-fixed-dim/10"
+                  : "text-on-surface-variant dark:text-outline hover:bg-surface-container-high hover:bg-secondary-fixed/10 dark:hover:bg-secondary-fixed-dim/10"
               )}
             >
-              <item.icon
-                className={cn(
-                  "mr-3 flex-shrink-0 h-5 w-5",
-                  isActive ? "text-primary" : "text-muted-foreground group-hover:text-foreground"
-                )}
-                aria-hidden="true"
-              />
-              {item.name}
+              <span 
+                className={cn("material-symbols-outlined", !isActive && "group-hover:text-primary")} 
+                style={isActive ? { fontVariationSettings: "'FILL' 1" } : {}}
+              >
+                {item.icon}
+              </span>
+              <span className={cn("font-headline-md text-label-md font-label-md", !isActive && "group-hover:text-primary")}>
+                {item.name}
+              </span>
             </Link>
           );
         })}
-
-        <div className="pt-8 pb-4">
-          <p className="px-3 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-            Preferences
-          </p>
-          <div className="mt-2 space-y-1">
-            {secondaryNavigation.map((item) => {
-              const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
-              return (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={cn(
-                    "group flex items-center px-3 py-2.5 text-sm font-medium rounded-xl transition-all duration-200",
-                    isActive
-                      ? "bg-primary/10 text-primary shadow-sm"
-                      : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
-                  )}
-                >
-                  <item.icon
-                    className={cn(
-                      "mr-3 flex-shrink-0 h-5 w-5",
-                      isActive ? "text-primary" : "text-muted-foreground group-hover:text-foreground"
-                    )}
-                    aria-hidden="true"
-                  />
-                  {item.name}
-                </Link>
-              );
-            })}
-          </div>
-        </div>
       </nav>
-
-      <div className="mt-auto pt-6">
-        <Link 
-          href="/chat"
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-secondary px-4 py-3 text-sm font-semibold text-white shadow-premium hover:opacity-90 transition-opacity"
-        >
-          <Sparkles className="h-4 w-4" />
+      
+      <div className="mt-auto pt-sm border-t border-outline-variant/20 flex flex-col gap-2 pb-4">
+        <Link href={`/${locale}/chat`} className="w-full flex items-center justify-center gap-2 py-3 bg-primary text-on-primary rounded-xl font-label-md text-label-md hover:scale-[1.02] transition-transform ai-glow">
+          <span className="material-symbols-outlined text-[18px]">temp_preferences_custom</span>
           Ask AI Assistant
         </Link>
+        {secondaryNavigation.map((item) => {
+          const itemPath = item.href === '/' ? `/${locale}` : `/${locale}${item.href}`;
+          const isActive = pathname === itemPath || pathname.startsWith(`${itemPath}/`);
+          return (
+            <Link
+              key={item.name}
+              href={itemPath}
+              className={cn(
+                "flex items-center gap-3 px-sm py-3 rounded-xl group transition-all",
+                isActive
+                  ? "bg-secondary-container text-on-secondary-container font-bold hover:bg-secondary-fixed/10 dark:hover:bg-secondary-fixed-dim/10"
+                  : "text-on-surface-variant dark:text-outline hover:bg-surface-container-high hover:bg-secondary-fixed/10 dark:hover:bg-secondary-fixed-dim/10"
+              )}
+            >
+              <span className={cn("material-symbols-outlined text-[20px]", !isActive && "group-hover:text-primary")}>
+                {item.icon}
+              </span>
+              <span className={cn("font-headline-md text-label-md font-label-md", !isActive && "group-hover:text-primary")}>
+                {item.name}
+              </span>
+            </Link>
+          );
+        })}
       </div>
-    </div>
+    </aside>
   );
 }

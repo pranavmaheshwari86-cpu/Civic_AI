@@ -1,164 +1,134 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { Settings, PlayCircle, Users, Clock, ArrowRight, Bell, User } from "lucide-react";
-import Image from "next/image";
-
 export default function Home() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30, filter: "blur(10px)" },
-    visible: {
-      opacity: 1,
-      y: 0,
-      filter: "blur(0px)",
-      transition: {
-        duration: 0.8,
-        ease: [0.16, 1, 0.3, 1] as const,
-      },
-    },
-  };
-
   return (
-    <main className="relative min-h-screen w-full overflow-hidden bg-[#f4f6fc] selection:bg-[#4f80ff] selection:text-white">
-      {/* Soft premium background */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-[#f2f4fc] via-[#f7f8fd] to-[#f4f6fc]" />
-      
-      {/* Upscaled Hero Image (Masked) */}
-      <div className="absolute top-0 right-0 w-[100vw] lg:w-[65vw] h-full z-0 pointer-events-none flex items-center justify-end mix-blend-normal">
-        <Image 
-          src="/upscaled-hero-new.png" 
-          alt="Glowing 3D Orb" 
-          fill
-          className="object-cover object-right opacity-100"
-          style={{
-            maskImage: 'linear-gradient(to right, transparent 0%, transparent 45%, black 65%), linear-gradient(to bottom, transparent 0%, transparent 12%, black 20%)',
-            WebkitMaskImage: 'linear-gradient(to right, transparent 0%, transparent 45%, black 65%), linear-gradient(to bottom, transparent 0%, transparent 12%, black 20%)',
-            maskComposite: 'intersect',
-            WebkitMaskComposite: 'source-in'
-          }}
-          priority
-        />
-      </div>
-
-      {/* Floating Header */}
-      <header className="absolute top-6 left-0 right-0 z-50 flex justify-center px-4 w-full">
-        <div className="w-full max-w-[1400px] h-[72px] flex items-center justify-between px-8">
-          <div className="flex items-center gap-4">
-            <a href="/" className="flex items-center space-x-2">
-              <span className="text-[28px] leading-none text-[#12122b]">🏛️</span>
-              <span className="font-heading font-bold text-[22px] tracking-tight text-[#12122b]">Civic AI</span>
-            </a>
-          </div>
-          
-          <nav className="hidden md:flex items-center gap-[40px] text-[15px] font-semibold text-[#5a5a72] absolute left-1/2 -translate-x-1/2">
-            <a href="/dashboard" className="hover:text-[#12122b] transition-colors">Dashboard</a>
-            <a href="/schemes" className="hover:text-[#12122b] transition-colors">Schemes</a>
-            <a href="/complaints" className="hover:text-[#12122b] transition-colors">Complaints</a>
-            <a href="/support" className="hover:text-[#12122b] transition-colors">Support</a>
-          </nav>
-          
-          <div className="flex items-center gap-3">
-            <button className="w-10 h-10 flex items-center justify-center text-[#5a5a72] hover:text-[#12122b] hover:bg-[#e4ebfc] rounded-full transition-colors" aria-label="Notifications">
-              <Bell className="w-[18px] h-[18px]" strokeWidth={2.5} />
-            </button>
-            <button className="w-10 h-10 flex items-center justify-center text-[#5a5a72] hover:text-[#12122b] hover:bg-[#e4ebfc] rounded-full transition-colors" aria-label="User Profile">
-              <User className="w-[18px] h-[18px]" strokeWidth={2.5} />
-            </button>
-          </div>
+    <div className="flex-grow pt-[104px] pb-xl flex flex-col gap-xl">
+      {/* Hero Section */}
+      <section className="max-w-container-max mx-auto w-full px-gutter relative pt-md pb-xl">
+        {/* Background Elements */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden flex justify-center items-center">
+          <div className="w-[800px] h-[800px] rounded-full bg-gradient-to-tr from-primary-fixed/30 to-secondary-fixed/30 blur-3xl opacity-50 absolute top-[-20%] right-[-10%]"></div>
         </div>
-      </header>
-
-      {/* Content Container */}
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto min-h-screen flex items-center px-8 md:px-16 pt-[120px] pb-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full h-full items-center">
-          
-          {/* Left Column - Hero Content */}
-          <motion.div 
-            className="flex flex-col items-start w-full max-w-[640px]"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            {/* Badge */}
-            <motion.div variants={itemVariants} className="mb-8">
-              <div className="inline-flex items-center gap-2 px-4 py-[10px] rounded-full bg-gradient-to-r from-[#eef2fa] to-[#e4ebfc] border border-white/60 shadow-[0_4px_20px_rgba(100,120,180,0.1)] backdrop-blur-md">
-                <Settings className="w-4 h-4 text-[#4f80ff] animate-[spin_4s_linear_infinite]" />
-                <span className="text-[13px] font-bold text-[#12122b] tracking-wider uppercase">Built for India</span>
-              </div>
-            </motion.div>
-
-            {/* Heading */}
-            <motion.h1 variants={itemVariants} className="text-[64px] md:text-[86px] leading-[1.05] font-heading font-extrabold tracking-[-0.03em] text-[#12122b] mb-6">
-              The Future of <br />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#5a32fa] via-[#4f80ff] to-[#4690ff]">
-                Digital Public
-              </span> <br />
-              Services
-            </motion.h1>
-
-            {/* Paragraph */}
-            <motion.p variants={itemVariants} className="text-[18px] md:text-[20px] leading-[1.6] text-[#5a5a72] max-w-[540px] mb-12 font-medium">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-xl items-center relative z-10">
+          {/* Hero Text */}
+          <div className="flex flex-col gap-md">
+            <div className="flex items-center gap-xs">
+              <span className="bg-primary/10 text-primary font-label-sm text-label-sm px-3 py-1 rounded-full border border-primary/20 uppercase flex items-center gap-1">
+                <span className="material-symbols-outlined text-[14px]">public</span>
+                Built for India
+              </span>
+            </div>
+            <h1 className="font-display-lg text-headline-lg-mobile md:text-display-lg text-on-surface">
+              The Future of <br/>
+              <span className="gradient-text">Digital Public Services</span>
+            </h1>
+            <p className="font-body-lg text-body-lg text-on-surface-variant max-w-[500px]">
               Empowering every citizen with AI-driven insights, schemes, and seamless governance. Experience the next generation of civic interaction.
-            </motion.p>
-
-            {/* Buttons */}
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-6 mb-16 w-full sm:w-auto">
-              <button className="group relative flex items-center justify-center gap-3 w-full sm:w-auto px-8 h-[60px] bg-gradient-to-b from-[#3a35e8] to-[#1e19d6] hover:from-[#433df2] hover:to-[#2823e2] text-white rounded-[20px] text-[17px] font-semibold transition-all duration-300 shadow-[0_8px_30px_rgba(58,53,232,0.3),inset_0_1px_1px_rgba(255,255,255,0.2)] hover:shadow-[0_12px_40px_rgba(58,53,232,0.4),inset_0_1px_1px_rgba(255,255,255,0.3)] hover:-translate-y-[2px]">
+            </p>
+            <div className="flex flex-wrap items-center gap-sm mt-sm">
+              <button className="bg-primary text-on-primary font-label-md text-label-md px-6 py-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:scale-[1.02] active:scale-95 flex items-center gap-2">
                 Launch Citizen Portal
-                <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
               </button>
-              
-              <button className="group flex items-center justify-center gap-3 w-full sm:w-auto px-8 h-[60px] bg-white/40 hover:bg-white/70 backdrop-blur-xl border border-white/60 text-[#12122b] rounded-[20px] text-[17px] font-semibold transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:-translate-y-[2px]">
-                <PlayCircle className="w-5 h-5 text-[#3a35e8]" />
+              <button className="bg-transparent text-secondary font-label-md text-label-md px-6 py-3 rounded-lg border border-secondary transition-all duration-300 hover:bg-secondary/5 flex items-center gap-2">
+                <span className="material-symbols-outlined text-[18px]">play_circle</span>
                 See How it Works
               </button>
-            </motion.div>
-
-            {/* Statistics */}
-            <motion.div variants={itemVariants} className="w-full">
-              <div className="flex items-center gap-8 px-8 py-6 rounded-[28px] bg-[#fdfdff] border border-white shadow-[0_12px_40px_rgba(0,0,0,0.04)]">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-[16px] bg-[#eef2fa] flex items-center justify-center text-[#3a35e8]">
-                    <Users className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <div className="text-[24px] font-extrabold text-[#12122b] leading-tight">50M+</div>
-                    <div className="text-[12px] font-bold text-[#8888a0] uppercase tracking-wider">Citizens Served</div>
-                  </div>
+            </div>
+            {/* Trust Indicators */}
+            <div className="mt-lg flex items-center gap-md text-on-surface-variant opacity-70">
+              <div className="flex flex-col">
+                <span className="font-headline-md text-headline-md text-primary">50M+</span>
+                <span className="font-label-sm text-label-sm uppercase">Citizens Served</span>
+              </div>
+              <div className="w-px h-10 bg-outline-variant/50"></div>
+              <div className="flex flex-col">
+                <span className="font-headline-md text-headline-md text-primary">0.2s</span>
+                <span className="font-label-sm text-label-sm uppercase">AI Response Time</span>
+              </div>
+            </div>
+          </div>
+          {/* Hero Visual */}
+          <div className="relative w-full aspect-square md:aspect-[4/3] flex justify-center items-center ai-aura">
+            <div className="w-full h-full glass-panel rounded-[2rem] overflow-hidden relative shadow-2xl p-4 flex items-center justify-center bg-gradient-to-br from-white/60 to-white/20">
+              <img 
+                className="w-full h-full object-cover rounded-xl" 
+                alt="A pristine, glowing AI orb floating organically in a clean, brightly lit, modernist architectural space." 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgYISmgxVXv77yGRk9AeyK8lUpOigM2OKjxlxelmik4J2tEJWRivg52zNERz99LNcpDOZSSVNVlWqsL9ZxWhAyVxYxysmnkVwVvQBezc-kcjUGyidtBCUHQDuqk4orOMk0cnSg73A3ccal_chSZ1fatfww3rAcOww1tXr1mM-eVuNVgKP-uswN1vsbUtEUayIXsztyGNVoHZsJsTvBc2YBwxkWmIgh_AciYzwCY1ICO_RjnwxiWLbM" 
+                style={{ mixBlendMode: 'multiply' }}
+              />
+              <div className="absolute top-8 right-8 glass-panel rounded-lg p-3 flex items-center gap-3 animate-pulse shadow-lg">
+                <div className="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+                  <span className="material-symbols-outlined">verified_user</span>
                 </div>
-                
-                <div className="w-[1px] h-12 bg-black/5" />
-                
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-[16px] bg-[#eef2fa] flex items-center justify-center text-[#3a35e8]">
-                    <Clock className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <div className="text-[24px] font-extrabold text-[#12122b] leading-tight">0.2s</div>
-                    <div className="text-[12px] font-bold text-[#8888a0] uppercase tracking-wider">AI Response Time</div>
-                  </div>
+                <div className="flex flex-col">
+                  <span className="font-label-sm text-label-sm text-on-surface">Identity Verified</span>
+                  <span className="font-body-md text-[10px] text-on-surface-variant">Instant Aadhaar Sync</span>
                 </div>
               </div>
-            </motion.div>
-
-          </motion.div>
-
-          {/* Right Column Spacer */}
-          <div className="hidden lg:block w-full h-full" />
-          
+              <div className="absolute bottom-8 left-8 glass-panel rounded-lg p-3 flex items-center gap-3 shadow-lg" style={{ animation: 'pulse-aura 3s ease-in-out infinite alternate-reverse' }}>
+                <div className="w-10 h-10 rounded-full bg-[#e8f5e9] text-[#2e7d32] flex items-center justify-center">
+                  <span className="material-symbols-outlined">description</span>
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-label-sm text-label-sm text-on-surface">Scheme Found</span>
+                  <span className="font-body-md text-[10px] text-on-surface-variant">PM Kisan Samman</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </main>
+      </section>
+
+      {/* Features Bento Grid */}
+      <section className="max-w-container-max mx-auto w-full px-gutter py-xl">
+        <div className="text-center mb-xl max-w-[600px] mx-auto">
+          <h2 className="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-sm">Intelligent Governance</h2>
+          <p className="font-body-lg text-body-lg text-on-surface-variant">Seamlessly integrated services designed to reduce friction and bring government closer to you.</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-md auto-rows-[250px]">
+          {/* Feature 1: Wide */}
+          <div className="md:col-span-2 glass-panel rounded-2xl p-lg flex flex-col justify-between relative overflow-hidden group hover:shadow-lg transition-all duration-300">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4"></div>
+            <div className="z-10">
+              <div className="w-12 h-12 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center mb-md">
+                <span className="material-symbols-outlined text-[24px]">model_training</span>
+              </div>
+              <h3 className="font-headline-md text-headline-md text-on-surface mb-2">AI-Powered Schemes</h3>
+              <p className="font-body-md text-body-md text-on-surface-variant max-w-[400px]">Personalized government scheme recommendations based on your unique profile and eligibility, analyzed in real-time.</p>
+            </div>
+          </div>
+          {/* Feature 2: Square */}
+          <div className="glass-panel rounded-2xl p-lg flex flex-col justify-between relative overflow-hidden group hover:shadow-lg transition-all duration-300 bg-surface-container-lowest">
+            <div className="z-10">
+              <div className="w-12 h-12 rounded-xl bg-[#fff3e0] text-[#e65100] flex items-center justify-center mb-md">
+                <span className="material-symbols-outlined text-[24px]">chat_bubble</span>
+              </div>
+              <h3 className="font-headline-md text-[20px] font-semibold text-on-surface mb-2">Smart Complaints</h3>
+              <p className="font-body-md text-[14px] text-on-surface-variant">NLP-driven grievance routing ensures your voice reaches the right official instantly.</p>
+            </div>
+          </div>
+          {/* Feature 3: Square */}
+          <div className="glass-panel rounded-2xl p-lg flex flex-col justify-between relative overflow-hidden group hover:shadow-lg transition-all duration-300 bg-surface-container-lowest">
+            <div className="z-10">
+              <div className="w-12 h-12 rounded-xl bg-[#e3f2fd] text-[#1565c0] flex items-center justify-center mb-md">
+                <span className="material-symbols-outlined text-[24px]">fact_check</span>
+              </div>
+              <h3 className="font-headline-md text-[20px] font-semibold text-on-surface mb-2">Instant Verification</h3>
+              <p className="font-body-md text-[14px] text-on-surface-variant">Zero-touch document validation linked securely with national databases.</p>
+            </div>
+          </div>
+          {/* Feature 4: Wide */}
+          <div className="md:col-span-2 glass-panel rounded-2xl p-lg flex flex-col justify-between relative overflow-hidden group hover:shadow-lg transition-all duration-300 bg-gradient-to-r from-surface to-surface-container-low border border-outline-variant/30">
+            <div className="absolute bottom-0 right-0 w-1/2 h-full opacity-10" style={{ backgroundImage: 'repeating-linear-gradient(45deg, #1a146b 0, #1a146b 1px, transparent 0, transparent 50%)', backgroundSize: '10px 10px' }}></div>
+            <div className="z-10 flex flex-col h-full justify-center">
+              <div className="w-12 h-12 rounded-xl bg-tertiary-container text-on-tertiary-container flex items-center justify-center mb-md">
+                <span className="material-symbols-outlined text-[24px]">monitoring</span>
+              </div>
+              <h3 className="font-headline-md text-headline-md text-on-surface mb-2">Real-time Analytics</h3>
+              <p className="font-body-md text-body-md text-on-surface-variant max-w-[400px]">Transparent tracking of application status and civic metrics at your fingertips.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

@@ -1,28 +1,71 @@
 'use client';
 
-import { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { Loader2, ShieldAlert, Plus, Edit2, Trash2 } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { Loader2, ShieldAlert, Plus, Edit2, Trash2, CheckCircle2 } from 'lucide-react';
+import { useAppStore } from '@/lib/store';
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<'catalog' | 'complaints'>('catalog');
+  const { accessToken, user } = useAppStore();
+  const queryClient = useQueryClient();
+  const router = useRouter();
 
-  const { isLoading: loadingComplaints } = useQuery({
+  useEffect(() => {
+    if (user && user.id !== 'admin') {
+      router.push('/');
+    }
+  }, [user, router]);
+
+  if (user && user.id !== 'admin') {
+    return null; // prevent rendering flash
+  }
+
+  const { data: complaintsData, isLoading: loadingComplaints } = useQuery({
     queryKey: ['admin-complaints'],
     queryFn: async () => {
-      // In a real app, this would be an admin-only endpoint
-      // Mock for now since backend doesn't have list all yet
-      return [];
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/v1/admin/complaints`, {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`
+        }
+      });
+      if (!res.ok) throw new Error('Failed to fetch complaints');
+      return res.json();
     },
-    enabled: activeTab === 'complaints',
+    enabled: activeTab === 'complaints' && !!accessToken,
+  });
+
+  const updateStatusMutation = useMutation({
+    mutationFn: async ({ id, status }: { id: string; status: string }) => {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/v1/admin/complaints/${id}/status`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`
+        },
+        body: JSON.stringify({ status })
+      });
+      if (!res.ok) throw new Error('Failed to update status');
+      return res.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['admin-complaints'] });
+    }
   });
 
   const { data: catalog, isLoading: loadingCatalog } = useQuery({
     queryKey: ['admin-catalog'],
     queryFn: async () => {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/catalog/search?q=`);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/v1/services/search?q=`);
       if (!res.ok) throw new Error('Failed to fetch catalog');
-      return res.json();
+      const data = await res.json();
+      return (data.services || []).map((s: any) => ({
+        _id: s.serviceId || s._id,
+        title: s.serviceName,
+        type: 'service',
+        department: s.department
+      }));
     },
     enabled: activeTab === 'catalog',
   });
@@ -117,10 +160,54 @@ export default function AdminDashboard() {
             
             {loadingComplaints ? (
               <div className="flex justify-center py-12"><Loader2 className="w-8 h-8 animate-spin" /></div>
+            ) : complaintsData?.items?.length > 0 ? (
+              <div className="bg-card border border-border rounded-xl overflow-hidden">
+                <table className="w-full text-left text-sm">
+                  <thead className="bg-muted text-muted-foreground">
+                    <tr>
+                      <th className="px-6 py-4 font-semibold">ID</th>
+                      <th className="px-6 py-4 font-semibold">Category</th>
+                      <th className="px-6 py-4 font-semibold">Description</th>
+                      <th className="px-6 py-4 font-semibold">Status</th>
+                      <th className="px-6 py-4 font-semibold text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-border">
+                    {complaintsData.items.map((complaint: any) => (
+                      <tr key={complaint._id} className="hover:bg-muted/50 transition-colors">
+                        <td className="px-6 py-4 font-mono text-xs">{complaint.trackingId}</td>
+                        <td className="px-6 py-4 capitalize">{complaint.category}</td>
+                        <td className="px-6 py-4 truncate max-w-xs">{complaint.description}</td>
+                        <td className="px-6 py-4">
+                          <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                            complaint.status === 'resolved' ? 'bg-green-100 text-green-700' :
+                            complaint.status === 'in_progress' ? 'bg-blue-100 text-blue-700' :
+                            'bg-yellow-100 text-yellow-700'
+                          }`}>
+                            {complaint.status}
+                          </span>
+                        </td>
+                        <td className="px-6 py-4 text-right space-x-2">
+                          {complaint.status !== 'resolved' && (
+                            <button 
+                              onClick={() => updateStatusMutation.mutate({ id: complaint._id, status: 'resolved' })}
+                              disabled={updateStatusMutation.isPending}
+                              className="p-2 text-green-600 hover:bg-green-600/10 rounded-md transition-colors disabled:opacity-50"
+                              title="Mark as Resolved"
+                            >
+                              <CheckCircle2 className="w-4 h-4" />
+                            </button>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             ) : (
               <div className="bg-card border border-border rounded-xl p-8 text-center text-muted-foreground">
                 <ShieldAlert className="w-12 h-12 mx-auto mb-4 opacity-50" />
-                <p>Complaint Queue API not yet implemented in backend.</p>
+                <p>No complaints found in the queue.</p>
               </div>
             )}
           </div>

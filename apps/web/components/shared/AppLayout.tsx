@@ -15,22 +15,23 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
 
   if (isAppRoute) {
     return (
-      <div className="flex min-h-screen bg-muted/20">
-        <Sidebar />
-        <main className="flex-1 overflow-y-auto">
-          {children}
-        </main>
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <div className="flex flex-1 mt-16 md:mt-24">
+          <Sidebar />
+          <main className="flex-1 overflow-y-auto">
+            {children}
+          </main>
+        </div>
       </div>
     );
   }
 
-  const isHomeRoute = pathname === "/" || pathname === "/en" || pathname === "/hi";
-
   return (
-    <>
-      {!isHomeRoute && <Header />}
+    <div className="flex flex-col min-h-screen">
+      <Header />
       <main className="flex-1">{children}</main>
-      {!isHomeRoute && <Footer />}
-    </>
+      <Footer />
+    </div>
   );
 }

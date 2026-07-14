@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Civic AI - Government Scheme Discovery</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error": "#ba1a1a",
+                      "secondary-fixed": "#dbe1ff",
+                      "on-tertiary-fixed-variant": "#70380b",
+                      "secondary": "#0051d5",
+                      "on-secondary-fixed-variant": "#003ea8",
+                      "surface-variant": "#e5e1e9",
+                      "secondary-container": "#316bf3",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-container": "#5f2b00",
+                      "error-container": "#ffdad6",
+                      "on-background": "#1b1b21",
+                      "surface": "#fcf8ff",
+                      "on-surface": "#1b1b21",
+                      "tertiary-fixed-dim": "#ffb688",
+                      "on-secondary-fixed": "#00174b",
+                      "outline-variant": "#c8c5d3",
+                      "outline": "#777682",
+                      "surface-container-low": "#f6f2fa",
+                      "surface-container-highest": "#e5e1e9",
+                      "secondary-fixed-dim": "#b4c5ff",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-fixed": "#311300",
+                      "on-primary-fixed-variant": "#3e3c8f",
+                      "on-secondary-container": "#fefcff",
+                      "surface-tint": "#5654a8",
+                      "inverse-surface": "#303036",
+                      "on-primary-container": "#9c9af4",
+                      "on-primary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "primary-container": "#312e81",
+                      "inverse-on-surface": "#f3eff7",
+                      "on-tertiary-container": "#de915e",
+                      "surface-container": "#f0ecf4",
+                      "tertiary-fixed": "#ffdbc7",
+                      "surface-dim": "#dcd9e0",
+                      "tertiary": "#3e1a00",
+                      "on-surface-variant": "#474651",
+                      "primary-fixed": "#e2dfff",
+                      "inverse-primary": "#c3c0ff",
+                      "primary": "#1a146b",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed-dim": "#c3c0ff",
+                      "surface-bright": "#fcf8ff",
+                      "background": "#fcf8ff",
+                      "surface-container-high": "#eae7ef",
+                      "on-primary-fixed": "#100563"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "base": "4px",
+                      "md": "24px",
+                      "sm": "16px",
+                      "xl": "64px",
+                      "xs": "8px",
+                      "lg": "40px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "display-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-lg-mobile": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        /* Custom Utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .shadow-ambient {
+            box-shadow: 0 12px 34px -10px rgba(15, 23, 42, 0.08);
+        }
+
+        .ai-aura {
+            position: relative;
+        }
+        .ai-aura::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, #1a146b, #ffb688, #0051d5);
+            z-radius: inherit;
+            z-index: -1;
+            opacity: 0.15;
+            filter: blur(8px);
+            animation: pulse-aura 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse-aura {
+            0% { opacity: 0.1; transform: scale(0.98); }
+            100% { opacity: 0.25; transform: scale(1.02); }
+        }
+
+        /* Hide scrollbar for clean horizontal scrolling */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col md:flex-row overflow-x-hidden">
+<!-- Mobile Top NavBar (Visible only on md:hidden) -->
+<header class="md:hidden bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl fixed top-0 w-full z-50 border-b border-outline-variant/30 dark:border-outline/20 shadow-sm dark:shadow-none flex justify-between items-center h-16 px-gutter max-w-container-max mx-auto">
+<div class="flex items-center gap-2">
+<span class="text-headline-md font-headline-md font-bold tracking-tight text-primary dark:text-primary-fixed">Civic AI</span>
+</div>
+<div class="flex gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container-low/50">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container-low/50" id="mobile-menu-btn">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar (Desktop & Mobile Menu) -->
+<nav class="bg-surface-container-lowest dark:bg-surface-container-low h-screen w-72 fixed left-0 top-0 z-40 bg-surface-container-lowest dark:bg-surface-container-low border-r border-outline-variant/20 shadow-xl dark:shadow-none flex flex-col p-sm gap-base h-full transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out" id="side-nav">
+<!-- Close button for mobile -->
+<button class="md:hidden absolute top-4 right-4 p-2 text-on-surface-variant" id="close-mobile-menu">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<div class="px-4 py-6 mb-4 mt-8 md:mt-0">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container shadow-ambient">
+<span class="material-symbols-outlined" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<h1 class="text-headline-md font-headline-md font-extrabold text-primary dark:text-primary-fixed">Civic AI</h1>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Citizen Portal</p>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto no-scrollbar">
+<div class="flex flex-col gap-1 px-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-outline hover:bg-surface-container-high transition-all hover:bg-secondary-fixed/10 dark:hover:bg-secondary-fixed-dim/10 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-outline hover:bg-surface-container-high transition-all hover:bg-secondary-fixed/10 dark:hover:bg-secondary-fixed-dim/10 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="temp_preferences_custom">temp_preferences_custom</span>
+<span class="font-label-md text-label-md">AI Insights</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container font-bold rounded-xl transition-all hover:bg-secondary-fixed/10 dark:hover:bg-secondary-fixed-dim/10" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-md text-label-md">Schemes</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-outline hover:bg-surface-container-high transition-all hover:bg-secondary-fixed/10 dark:hover:bg-secondary-fixed-dim/10 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="assignment_turned_in">assignment_turned_in</span>
+<span class="font-label-md text-label-md">Applications</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-outline hover:bg-surface-container-high transition-all hover:bg-secondary-fixed/10 dark:hover:bg-secondary-fixed-dim/10 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</a>
+</div>
+<!-- Advanced Filters Sidebar Section -->
+<div class="mt-8 px-6">
+<h3 class="text-label-sm font-label-sm text-outline uppercase tracking-wider mb-4">Advanced Filters</h3>
+<div class="space-y-6">
+<!-- Location Filter -->
+<div>
+<label class="block text-label-md font-label-md text-on-surface-variant mb-2">Location</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm" data-icon="location_on">location_on</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface border border-outline-variant rounded-lg text-body-md font-body-md focus:border-secondary focus:ring-1 focus:ring-secondary transition-all outline-none" placeholder="State or District" type="text"/>
+</div>
+</div>
+<!-- Age Filter -->
+<div>
+<label class="block text-label-md font-label-md text-on-surface-variant mb-2">Age Group</label>
+<select class="w-full px-4 py-2 bg-surface border border-outline-variant rounded-lg text-body-md font-body-md focus:border-secondary focus:ring-1 focus:ring-secondary transition-all outline-none appearance-none cursor-pointer">
+<option value="">Select Age</option>
+<option value="18-25">18 - 25 Years</option>
+<option value="26-35">26 - 35 Years</option>
+<option value="36-50">36 - 50 Years</option>
+<option value="50+">50+ Years</option>
+</select>
+</div>
+<!-- Income Filter -->
+<div>
+<label class="block text-label-md font-label-md text-on-surface-variant mb-2">Annual Income</label>
+<select class="w-full px-4 py-2 bg-surface border border-outline-variant rounded-lg text-body-md font-body-md focus:border-secondary focus:ring-1 focus:ring-secondary transition-all outline-none appearance-none cursor-pointer">
+<option value="">Select Range</option>
+<option value="below-1l">Below ₹1 Lakh</option>
+<option value="1l-3l">₹1L - ₹3 Lakh</option>
+<option value="3l-8l">₹3L - ₹8 Lakh</option>
+<option value="above-8l">Above ₹8 Lakh</option>
+</select>
+</div>
+<button class="w-full py-2 bg-secondary-fixed text-on-secondary-fixed rounded-lg text-label-md font-label-md font-medium hover:bg-secondary-fixed-dim transition-colors mt-4">
+                        Apply Filters
+                    </button>
+</div>
+</div>
+</div>
+<div class="mt-auto px-4 py-4 space-y-2 border-t border-outline-variant/20">
+<button class="w-full py-3 bg-gradient-to-r from-primary to-secondary-container text-on-primary rounded-xl text-label-md font-label-md font-semibold hover:opacity-90 transition-opacity flex items-center justify-center gap-2 ai-aura mb-4">
+<span class="material-symbols-outlined text-sm" data-icon="magic_button">magic_button</span>
+                Ask AI Assistant
+            </button>
+<div class="flex justify-between px-2">
+<a class="text-on-surface-variant hover:text-primary flex flex-col items-center gap-1 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-[10px] font-label-sm">Settings</span>
+</a>
+<a class="text-on-surface-variant hover:text-primary flex flex-col items-center gap-1 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="text-[10px] font-label-sm">Help</span>
+</a>
+<a class="text-on-surface-variant hover:text-primary flex flex-col items-center gap-1 transition-colors" href="#">
+<img class="w-6 h-6 rounded-full object-cover border border-outline-variant" data-alt="A small, professional headshot photo of a diverse user against a light background, circular crop, bright and clear lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCd5w7m2wtpVjnNDThOqxucL1zYQWurrUaqxx4AEX13WVr5tuEQ_9iziBv_H6Sj1wM03j4R6I_w2faZKNlT3fxQSk18r_XtRGRaGlAeWjYnCSMVLPuDrqszll-qVowgmgfGdrLuFmL73uLo6WmvgxtgnHmnlf96lKggJ--_HMaB-gUSU1MkCkTTh8r9LQgDnOKNDsA9cfIavpKYLMSyac9qo6tj-Z3kR87-V518p19lpcaoD8AKvr7b"/>
+<span class="text-[10px] font-label-sm">Profile</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-72 mt-16 md:mt-0 p-gutter lg:p-xl max-w-[1600px] w-full mx-auto relative min-h-screen flex flex-col">
+<!-- Subtle Background Pattern/Gradient -->
+<div class="absolute inset-0 z-[-1] pointer-events-none overflow-hidden">
+<div class="absolute top-0 right-0 w-[800px] h-[800px] bg-primary-fixed-dim/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3"></div>
+<div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary-fixed/20 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4"></div>
+</div>
+<!-- Top Header Actions (Desktop only) -->
+<div class="hidden md:flex justify-end items-center gap-4 mb-xl">
+<button class="p-2 text-on-surface-variant hover:text-primary bg-surface rounded-full shadow-sm hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="flex items-center gap-2 px-3 py-1.5 bg-surface rounded-full border border-outline-variant hover:border-primary transition-colors cursor-pointer">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="A small, professional headshot photo of a diverse user against a light background, circular crop, bright and clear lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDQkw6iIkTpF0NlYqZoA0TQn7I75It0wq-ABcR2urz1j85PSfMs0GMY6RpfHH7z43Jd5dj_ATkfcTlf-9i_9Uy2XKQD46BNn6T_syYTiEQ6vJqi614Wi5drKmNUX2LK7t1L540IIKcEkN9VK2uFz2cLq0skGVzLEaj3GqeWZyhsKuaTX00uExPdDa5HEaxGmrsDXjQxAKCzPDDF1K7oRyyIe_8GGPfiKPu-CoDjZ8sYrCUvr4TaDMh"/>
+<span class="text-label-sm font-label-sm text-on-surface-variant font-medium">Citizen Portal</span>
+</button>
+</div>
+<!-- AI Search Section -->
+<section class="max-w-3xl mx-auto w-full mb-xl text-center">
+<h2 class="text-display-lg font-display-lg font-bold tracking-tight text-primary mb-4">Discover Your Benefits</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-8 max-w-2xl mx-auto">Our AI engine instantly matches your profile with hundreds of government schemes, subsidies, and grants designed for you.</p>
+<div class="relative group">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary via-secondary to-primary rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
+<div class="relative flex items-center bg-surface border border-outline-variant rounded-2xl shadow-ambient overflow-hidden pl-6 pr-2 py-2 focus-within:border-secondary transition-colors">
+<span class="material-symbols-outlined text-secondary text-xl mr-3" data-icon="auto_awesome">auto_awesome</span>
+<input class="w-full bg-transparent border-none text-body-lg font-body-lg text-on-surface placeholder:text-outline focus:ring-0 outline-none" placeholder="Tell me what you need... (e.g., 'Looking for a business loan for women in tech')" type="text"/>
+<button class="ml-4 px-6 py-3 bg-primary text-on-primary rounded-xl text-label-md font-label-md font-semibold hover:bg-primary/90 transition-colors shadow-sm whitespace-nowrap">
+                        Search Schemes
+                    </button>
+</div>
+</div>
+<!-- Quick Prompts -->
+<div class="flex flex-wrap justify-center gap-3 mt-6">
+<span class="text-label-sm font-label-sm text-outline mr-2 self-center">Try asking:</span>
+<button class="px-4 py-1.5 rounded-full border border-outline-variant text-label-sm font-label-sm text-on-surface-variant hover:bg-surface-container-low hover:border-primary transition-colors bg-surface">Higher Education Grants</button>
+<button class="px-4 py-1.5 rounded-full border border-outline-variant text-label-sm font-label-sm text-on-surface-variant hover:bg-surface-container-low hover:border-primary transition-colors bg-surface">Farming Equipment Subsidy</button>
+<button class="px-4 py-1.5 rounded-full border border-outline-variant text-label-sm font-label-sm text-on-surface-variant hover:bg-surface-container-low hover:border-primary transition-colors bg-surface">Healthcare for Seniors</button>
+</div>
+</section>
+<!-- Category Filters -->
+<section class="mb-lg">
+<div class="flex items-center gap-4 overflow-x-auto no-scrollbar pb-2">
+<button class="px-6 py-2.5 rounded-full bg-primary text-on-primary text-label-md font-label-md font-medium shadow-sm flex-shrink-0 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="border_all">border_all</span>
+                    All Categories
+                </button>
+<button class="px-6 py-2.5 rounded-full bg-surface border border-outline-variant text-on-surface-variant text-label-md font-label-md hover:bg-surface-container-low transition-colors flex-shrink-0 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="health_and_safety">health_and_safety</span>
+                    Health &amp; Wellness
+                </button>
+<button class="px-6 py-2.5 rounded-full bg-surface border border-outline-variant text-on-surface-variant text-label-md font-label-md hover:bg-surface-container-low transition-colors flex-shrink-0 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="school">school</span>
+                    Education
+                </button>
+<button class="px-6 py-2.5 rounded-full bg-surface border border-outline-variant text-on-surface-variant text-label-md font-label-md hover:bg-surface-container-low transition-colors flex-shrink-0 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="agriculture">agriculture</span>
+                    Agriculture
+                </button>
+<button class="px-6 py-2.5 rounded-full bg-surface border border-outline-variant text-on-surface-variant text-label-md font-label-md hover:bg-surface-container-low transition-colors flex-shrink-0 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="storefront">storefront</span>
+                    Business &amp; MSME
+                </button>
+<button class="px-6 py-2.5 rounded-full bg-surface border border-outline-variant text-on-surface-variant text-label-md font-label-md hover:bg-surface-container-low transition-colors flex-shrink-0 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="home_work">home_work</span>
+                    Housing
+                </button>
+</div>
+</section>
+<!-- Schemes Grid -->
+<section class="flex-1">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-headline-md font-headline-md font-bold text-on-surface">Recommended for You</h3>
+<span class="text-label-md font-label-md text-on-surface-variant">Showing 12 results</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1 (High Match) -->
+<div class="bg-surface rounded-2xl border border-outline-variant hover:border-secondary-fixed-dim shadow-sm hover:shadow-ambient transition-all duration-300 flex flex-col overflow-hidden relative group">
+<!-- Top Accent Line -->
+<div class="h-1.5 w-full bg-gradient-to-r from-secondary to-primary-container"></div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-primary-fixed-dim/30 text-primary px-3 py-1 rounded-full text-label-sm font-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_circle">check_circle</span>
+                                98% Match
+                            </div>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="bookmark_border">bookmark_border</span>
+</button>
+</div>
+<h4 class="text-headline-md font-headline-md font-bold text-on-surface mb-2 leading-tight">Pradhan Mantri Mudra Yojana (PMMY)</h4>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6 line-clamp-2">Provides collateral-free loans up to ₹10 Lakhs to non-corporate, non-farm small/micro enterprises to start or expand business.</p>
+<div class="mt-auto">
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2.5 py-1 bg-surface-container-high text-on-surface-variant rounded-md text-[11px] font-label-sm uppercase tracking-wider">Business</span>
+<span class="px-2.5 py-1 bg-surface-container-high text-on-surface-variant rounded-md text-[11px] font-label-sm uppercase tracking-wider">Loan</span>
+<span class="px-2.5 py-1 bg-surface-container-high text-on-surface-variant rounded-md text-[11px] font-label-sm uppercase tracking-wider">No Collateral</span>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 py-2.5 px-4 bg-surface border border-outline-variant text-on-surface-variant rounded-lg text-label-md font-label-md font-medium hover:bg-surface-container-low transition-colors text-center">
+                                    View Details
+                                </button>
+<button class="flex-1 py-2.5 px-4 bg-primary text-on-primary rounded-lg text-label-md font-label-md font-medium hover:bg-primary/90 transition-colors shadow-sm text-center flex items-center justify-center gap-2 ai-aura">
+                                    Quick Apply
+                                    <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface rounded-2xl border border-outline-variant hover:border-secondary-fixed-dim shadow-sm hover:shadow-ambient transition-all duration-300 flex flex-col overflow-hidden relative group">
+<div class="h-1.5 w-full bg-gradient-to-r from-secondary-fixed-dim to-secondary-container"></div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-surface-container text-on-surface-variant px-3 py-1 rounded-full text-label-sm font-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="pie_chart">pie_chart</span>
+                                85% Match
+                            </div>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="bookmark_border">bookmark_border</span>
+</button>
+</div>
+<h4 class="text-headline-md font-headline-md font-bold text-on-surface mb-2 leading-tight">Stand-Up India Scheme</h4>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6 line-clamp-2">Facilitates bank loans between ₹10 lakh and ₹1 Crore to at least one SC/ST borrower and one woman borrower per bank branch.</p>
+<div class="mt-auto">
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2.5 py-1 bg-surface-container-high text-on-surface-variant rounded-md text-[11px] font-label-sm uppercase tracking-wider">Women Entrepreneurs</span>
+<span class="px-2.5 py-1 bg-surface-container-high text-on-surface-variant rounded-md text-[11px] font-label-sm uppercase tracking-wider">SC/ST</span>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 py-2.5 px-4 bg-surface border border-outline-variant text-on-surface-variant rounded-lg text-label-md font-label-md font-medium hover:bg-surface-container-low transition-colors text-center">
+                                    View Details
+                                </button>
+<button class="flex-1 py-2.5 px-4 bg-primary text-on-primary rounded-lg text-label-md font-label-md font-medium hover:bg-primary/90 transition-colors shadow-sm text-center">
+                                    Quick Apply
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface rounded-2xl border border-outline-variant hover:border-secondary-fixed-dim shadow-sm hover:shadow-ambient transition-all duration-300 flex flex-col overflow-hidden relative group">
+<div class="h-1.5 w-full bg-surface-variant"></div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<div class="bg-surface-container text-on-surface-variant px-3 py-1 rounded-full text-label-sm font-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="info">info</span>
+                                62% Match
+                            </div>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="bookmark_border">bookmark_border</span>
+</button>
+</div>
+<h4 class="text-headline-md font-headline-md font-bold text-on-surface mb-2 leading-tight">Ayushman Bharat Yojana</h4>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6 line-clamp-2">Provides health coverage of up to ₹5 lakhs per family per year for secondary and tertiary care hospitalization.</p>
+<div class="mt-auto">
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2.5 py-1 bg-surface-container-high text-on-surface-variant rounded-md text-[11px] font-label-sm uppercase tracking-wider">Healthcare</span>
+<span class="px-2.5 py-1 bg-surface-container-high text-on-surface-variant rounded-md text-[11px] font-label-sm uppercase tracking-wider">Insurance</span>
+</div>
+<div class="flex gap-3">
+<button class="w-full py-2.5 px-4 bg-surface border border-outline-variant text-on-surface-variant rounded-lg text-label-md font-label-md font-medium hover:bg-surface-container-low transition-colors text-center">
+                                    View Eligibility Details
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State (Hidden by default, shown for example) -->
+<div class="hidden col-span-full md:col-span-2 lg:col-span-3 py-xl flex flex-col items-center justify-center text-center bg-surface-container-lowest border border-outline-variant/50 rounded-2xl border-dashed">
+<div class="w-20 h-20 bg-surface-container rounded-full flex items-center justify-center text-outline mb-6">
+<span class="material-symbols-outlined text-4xl" data-icon="search_off">search_off</span>
+</div>
+<h3 class="text-headline-md font-headline-md font-bold text-on-surface mb-2">No exact matches found</h3>
+<p class="text-body-md font-body-md text-on-surface-variant mb-6 max-w-md">We couldn't find a scheme matching all your specific filters. Try broadening your search or let our AI guide you.</p>
+<button class="px-6 py-3 bg-secondary-container text-on-secondary-container rounded-xl text-label-md font-label-md font-semibold hover:bg-secondary-container/90 transition-colors shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+                        Ask AI for Help
+                    </button>
+</div>
+</div>
+<div class="mt-8 flex justify-center">
+<button class="px-6 py-3 bg-surface border border-outline-variant text-on-surface rounded-full text-label-md font-label-md font-medium hover:bg-surface-container-low transition-colors flex items-center gap-2">
+                    Load More Schemes
+                    <span class="material-symbols-outlined text-sm" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-xl mt-xl border-t border-outline-variant/50 max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 items-center gap-6">
+<div class="flex flex-col md:flex-row items-center md:items-start gap-4">
+<span class="font-headline-md text-primary dark:text-primary-fixed font-bold">Civic AI</span>
+<span class="text-on-surface-variant dark:text-outline text-label-sm font-label-sm text-center md:text-left">
+                    © 2024 Civic AI (Smart Bharat). Government of India Initiative.
+                </span>
+</div>
+<div class="flex flex-wrap justify-center md:justify-end gap-6 text-label-sm font-label-sm">
+<a class="text-on-surface-variant hover:text-primary transition-opacity duration-200 hover:opacity-80" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-opacity duration-200 hover:opacity-80" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-opacity duration-200 hover:opacity-80" href="#">Accessibility</a>
+<a class="text-on-surface-variant hover:text-primary transition-opacity duration-200 hover:opacity-80" href="#">Contact Us</a>
+</div>
+</footer>
+</main>
+<script>
+        // Simple mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMobileMenuBtn = document.getElementById('close-mobile-menu');
+        const sideNav = document.getElementById('side-nav');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            sideNav.classList.remove('-translate-x-full');
+        });
+
+        closeMobileMenuBtn.addEventListener('click', () => {
+            sideNav.classList.add('-translate-x-full');
+        });
+    </script>
+</body></html>

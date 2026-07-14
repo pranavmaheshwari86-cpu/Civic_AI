@@ -9,7 +9,7 @@ test.describe('Schemes Discovery Page', () => {
     await expect(page.locator('h2', { hasText: 'Discover Your Benefits' })).toBeVisible();
     
     // Check search input placeholder
-    await expect(page.getByPlaceholder('Tell me what you need... (e.g., \'Looking for a business loan\')')).toBeVisible();
+    await expect(page.getByPlaceholder(/Tell me what you need/i)).toBeVisible();
 
     // Verify Category Pills exist
     await expect(page.locator('button', { hasText: 'All Categories' })).toBeVisible();
@@ -20,7 +20,7 @@ test.describe('Schemes Discovery Page', () => {
     await page.goto('/en/schemes');
 
     // Find the search input and type a query
-    const searchInput = page.getByPlaceholder('Tell me what you need...');
+    const searchInput = page.getByPlaceholder(/Tell me what you need/i);
     await searchInput.fill('Healthcare');
 
     // Wait for debounce and API call (mocking or relying on actual API structure)

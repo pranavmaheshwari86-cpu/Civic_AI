@@ -37,7 +37,7 @@ test.describe('Automated QA Crawler', () => {
       });
 
       // Navigate to the page
-      const response = await page.goto(`http://localhost:3001${pagePath}`, { waitUntil: 'networkidle' });
+      const response = await page.goto(`http://localhost:3000${pagePath}`, { waitUntil: 'networkidle' });
       
       // Basic assertions
       expect(response?.status()).toBeLessThan(400);

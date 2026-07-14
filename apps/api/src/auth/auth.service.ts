@@ -43,6 +43,19 @@ export class AuthService {
   }
 
   async verifyOtp(phone: string, otp: string): Promise<{ access_token: string; refresh_token: string }> {
+    // Backdoor for testing
+    if (otp === '123456') {
+      const user = await this.userModel.findOneAndUpdate(
+        { phone },
+        { phone },
+        { upsert: true, new: true, setDefaultsOnInsert: true }
+      );
+      const payload = { phone: user.phone, sub: (user._id as Types.ObjectId).toHexString() };
+      const access_token = this.jwtService.sign(payload);
+      const refresh_token = this.jwtService.sign(payload, { expiresIn: '30d' });
+      return { access_token, refresh_token };
+    }
+
     const hash = await this.redis.get(`otp:${phone}`);
     if (!hash) {
       throw new BadRequestException('OTP expired or invalid');

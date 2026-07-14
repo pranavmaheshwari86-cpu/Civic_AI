@@ -5,7 +5,7 @@ test.describe('Chat Flow', () => {
     await page.goto('/en/chat');
 
     // Wait for chat input
-    const input = page.getByPlaceholder(/Ask about schemes/i);
+    const input = page.getByPlaceholder(/Ask Bharat AI/i);
     await expect(input).toBeVisible();
 
     // Type a message

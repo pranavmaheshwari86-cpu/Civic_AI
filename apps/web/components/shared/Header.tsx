@@ -1,38 +1,42 @@
 import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
-import { Menu, Bell, User } from "lucide-react";
+import { LanguageToggle } from "./LanguageToggle";
+import { useLocale } from "next-intl";
 
 export function Header() {
+  const locale = useLocale();
   return (
-    <header className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 w-full">
-      <div className="w-full max-w-[1400px] bg-white/70 dark:bg-black/40 backdrop-blur-2xl border border-white/40 dark:border-white/10 rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.04)] h-[72px] flex items-center justify-between px-8">
-        <div className="flex items-center gap-4">
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="text-[28px] leading-none text-[#12122b] dark:text-white">🏛️</span>
-            <span className="font-heading font-bold text-[22px] tracking-tight text-[#12122b] dark:text-white">Civic AI</span>
-          </Link>
-        </div>
+    <header className="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl border-b border-outline-variant/30 dark:border-outline/20 shadow-sm dark:shadow-none transition-all duration-300">
+      <div className="flex justify-between items-center h-16 px-gutter max-w-container-max mx-auto">
+        <Link href={`/${locale}`} className="flex items-center gap-xs cursor-pointer">
+          <span className="material-symbols-outlined text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>assured_workload</span>
+          <span className="text-headline-md font-headline-md font-bold tracking-tight text-primary dark:text-primary-fixed">Civic AI</span>
+        </Link>
         
-        <nav className="hidden md:flex items-center gap-[40px] text-[15px] font-semibold text-[#5a5a72] dark:text-gray-300 absolute left-1/2 -translate-x-1/2">
-          <Link href="/dashboard" className="hover:text-[#12122b] dark:hover:text-white transition-colors">Dashboard</Link>
-          <Link href="/schemes" className="hover:text-[#12122b] dark:hover:text-white transition-colors">Schemes</Link>
-          <Link href="/complaints" className="hover:text-[#12122b] dark:hover:text-white transition-colors">Complaints</Link>
-          <Link href="/support" className="hover:text-[#12122b] dark:hover:text-white transition-colors">Support</Link>
+        <nav className="hidden md:flex items-center gap-md font-display-lg text-body-md font-body-md">
+          <Link href={`/${locale}/dashboard`} className="text-on-surface-variant dark:text-outline hover:text-primary transition-colors hover:bg-surface-container-low/50 dark:hover:bg-surface-container-high/20 rounded-lg px-3 py-2 transition-all duration-300 ease-in-out hover:scale-[1.02] active:scale-95">Dashboard</Link>
+          <Link href={`/${locale}/schemes`} className="text-on-surface-variant dark:text-outline hover:text-primary transition-colors hover:bg-surface-container-low/50 dark:hover:bg-surface-container-high/20 rounded-lg px-3 py-2 transition-all duration-300 ease-in-out hover:scale-[1.02] active:scale-95">Schemes</Link>
+          <Link href={`/${locale}/complaints`} className="text-on-surface-variant dark:text-outline hover:text-primary transition-colors hover:bg-surface-container-low/50 dark:hover:bg-surface-container-high/20 rounded-lg px-3 py-2 transition-all duration-300 ease-in-out hover:scale-[1.02] active:scale-95">Complaints</Link>
+          <Link href={`/${locale}/support`} className="text-on-surface-variant dark:text-outline hover:text-primary transition-colors hover:bg-surface-container-low/50 dark:hover:bg-surface-container-high/20 rounded-lg px-3 py-2 transition-all duration-300 ease-in-out hover:scale-[1.02] active:scale-95">Support</Link>
         </nav>
         
-        <div className="flex items-center gap-3">
-          <button className="w-10 h-10 flex items-center justify-center text-[#5a5a72] dark:text-gray-300 hover:text-[#12122b] dark:hover:text-white hover:bg-[#f0f3fc] dark:hover:bg-white/10 rounded-full transition-colors" aria-label="Notifications">
-            <Bell className="w-[18px] h-[18px]" strokeWidth={2.5} />
+        <div className="flex items-center gap-sm">
+          <button className="md:hidden text-on-surface-variant hover:text-primary p-2 rounded-full hover:bg-surface-container-low/50 transition-colors">
+            <span className="material-symbols-outlined">menu</span>
           </button>
-          <button className="w-10 h-10 flex items-center justify-center text-[#5a5a72] dark:text-gray-300 hover:text-[#12122b] dark:hover:text-white hover:bg-[#f0f3fc] dark:hover:bg-white/10 rounded-full transition-colors" aria-label="User Profile">
-            <User className="w-[18px] h-[18px]" strokeWidth={2.5} />
-          </button>
-          <div className="pl-1">
-            <ThemeToggle />
+          
+          <div className="hidden sm:flex items-center gap-xs text-primary dark:text-primary-fixed-dim">
+            <button aria-label="notifications" className="p-2 rounded-full hover:bg-surface-container-low/50 dark:hover:bg-surface-container-high/20 transition-all duration-300 ease-in-out hover:scale-[1.02] active:scale-95">
+              <span className="material-symbols-outlined">notifications</span>
+            </button>
+            <button aria-label="account_circle" className="p-2 rounded-full hover:bg-surface-container-low/50 dark:hover:bg-surface-container-high/20 transition-all duration-300 ease-in-out hover:scale-[1.02] active:scale-95">
+              <span className="material-symbols-outlined">account_circle</span>
+            </button>
+            <div className="pl-2 flex items-center gap-2">
+              <LanguageToggle />
+              <ThemeToggle />
+            </div>
           </div>
-          <button className="md:hidden p-2 rounded-md hover:bg-muted" aria-label="Menu">
-            <Menu className="w-5 h-5" />
-          </button>
         </div>
       </div>
     </header>

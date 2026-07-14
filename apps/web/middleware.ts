@@ -18,6 +18,13 @@ export default function middleware(req: NextRequest) {
       const locale = req.nextUrl.pathname.split('/')[1] || 'en';
       return NextResponse.redirect(new URL(`/${locale}/login`, req.url));
     }
+    
+    const isAdminRoute = req.nextUrl.pathname.includes('/admin');
+    const roleCookie = req.cookies.get('role')?.value;
+    if (isAdminRoute && roleCookie !== 'admin') {
+      const locale = req.nextUrl.pathname.split('/')[1] || 'en';
+      return NextResponse.redirect(new URL(`/${locale}/dashboard`, req.url));
+    }
   }
   return intlMiddleware(req);
 }

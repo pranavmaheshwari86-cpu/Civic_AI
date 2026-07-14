@@ -5,7 +5,7 @@ import { useAppStore } from '@/lib/store';
 import { ShieldCheck, MapPin, Camera, AlertCircle, Loader2 } from 'lucide-react';
 
 export default function ComplaintsPage() {
-  const [category, setCategory] = useState('Sanitation');
+  const [category, setCategory] = useState('sanitation_waste');
   const [description, setDescription] = useState('');
   const location = { lat: 28.6139, lng: 77.2090 };
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -16,7 +16,7 @@ export default function ComplaintsPage() {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/complaints`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/v1/complaints`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -25,7 +25,10 @@ export default function ComplaintsPage() {
         body: JSON.stringify({
           category,
           description,
-          location,
+          lat: location.lat,
+          lng: location.lng,
+          phone: '1234567890',
+          otp: '123456'
         }),
       });
 
@@ -82,11 +85,11 @@ export default function ComplaintsPage() {
             onChange={(e) => setCategory(e.target.value)}
             className="w-full bg-background border border-border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50"
           >
-            <option value="Sanitation">Sanitation (Garbage, Drains)</option>
-            <option value="Roads">Roads (Potholes, Streetlights)</option>
-            <option value="Water">Water Supply</option>
-            <option value="Electricity">Electricity</option>
-            <option value="Other">Other</option>
+            <option value="sanitation_waste">Sanitation (Garbage, Drains)</option>
+            <option value="road_infrastructure">Roads (Potholes, Streetlights)</option>
+            <option value="water_supply">Water Supply</option>
+            <option value="streetlight_electrical">Electricity</option>
+            <option value="other">Other</option>
           </select>
         </div>
 

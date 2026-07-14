@@ -1,26 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import {
-  ClipboardList, BookOpen,
-  ShieldCheck, Bell,
-  CheckCircle2,
-} from 'lucide-react';
-import { m as motion } from "motion/react";
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-
-const QUICK_LINKS = [
-  { label: 'Apply for Scheme', href: '/schemes', icon: BookOpen, desc: 'Browse 42+ options', accent: 'text-gray-700' },
-  { label: 'Track Complaint', href: '/complaints', icon: ClipboardList, desc: '2 active issues', accent: 'text-gray-700' },
-  { label: 'Upload Documents', href: '/documents', icon: ShieldCheck, desc: 'DigiLocker Sync', accent: 'text-gray-700' },
-];
-
-
-
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useAppStore } from '@/lib/store';
 
@@ -33,157 +14,150 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (!accessToken) {
-      router.push(`/${locale}`); // Redirect to home if unauthenticated
+      router.push(`/${locale}`);
     }
   }, [accessToken, router, locale]);
 
   if (!accessToken) {
-    return null; // Prevent flashing protected content
+    return null;
   }
 
   return (
-    <div className="px-6 lg:px-12 py-8 max-w-[1400px] mx-auto w-full pb-24 md:pb-8">
-      {/* ── Page Header ── */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45 }}
-              className="mb-lg flex flex-col md:flex-row md:items-center md:justify-between gap-md"
-            >
+    <div className="pb-xl px-gutter min-h-screen pt-sm">
+      <div className="max-w-container-max mx-auto grid grid-cols-12 gap-md">
+        {/* Welcome Header */}
+        <header className="col-span-12 mb-sm flex flex-col md:flex-row justify-between items-start md:items-end gap-sm">
+          <div>
+            <h1 className="font-display-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-1">Welcome back, Rohan</h1>
+            <p className="font-body-md text-body-md text-on-surface-variant">Here is your digital sovereign overview for today.</p>
+          </div>
+          <div className="text-right">
+            <p className="font-label-sm text-label-sm text-outline uppercase tracking-wider">Citizen ID</p>
+            <p className="font-body-md text-body-md font-medium text-on-surface">CIV-8492-IN</p>
+          </div>
+        </header>
+
+        {/* AI Insights Card (Full Width) */}
+        <section className="col-span-12">
+          <div className="ai-gradient-border rounded-xl p-md flex flex-col md:flex-row items-start md:items-center justify-between gap-md ai-glow transition-all hover:scale-[1.005]">
+            <div className="flex items-start gap-4 flex-1">
+              <div className="w-12 h-12 rounded-full bg-secondary-fixed/30 flex items-center justify-center shrink-0">
+                <span className="material-symbols-outlined text-secondary text-2xl" style={{ fontVariationSettings: "'FILL' 1" }}>auto_awesome</span>
+              </div>
               <div>
-                <h1 className="text-4xl md:text-5xl font-semibold tracking-tighter text-foreground">Dashboard</h1>
-                <p className="text-lg text-muted-foreground mt-1">Welcome back. Here&apos;s your civic activity overview.</p>
-              </div>
-              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="outline" className="hidden md:flex gap-xs">
-                  <Bell className="w-4 h-4" />
-                  Notifications
-                </Button>
-              </motion.div>
-            </motion.div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-              {/* ── AI Insights Card ── */}
-              <div className="lg:col-span-2">
-                <Card className="p-8 relative overflow-hidden bg-white/60 backdrop-blur-xl border border-white/20 shadow-premium h-full flex flex-col justify-between rounded-[2rem]">
-                  <div>
-                    <div className="flex justify-between items-start mb-6">
-                      <h2 className="text-2xl font-bold text-foreground">AI Insights: PM Kisan Samman Nidhi</h2>
-                      <div className="flex gap-2">
-                        <Badge variant="secondary" className="bg-green-100 text-green-700 hover:bg-green-100 border-0 shadow-sm px-3 rounded-full">High Match</Badge>
-                        <Badge variant="secondary" className="bg-orange-100 text-orange-700 hover:bg-orange-100 border-0 shadow-sm px-3 rounded-full">Requires 1 Doc</Badge>
-                      </div>
-                    </div>
-                    <p className="text-gray-600 mb-8 max-w-xl text-sm leading-relaxed">
-                      Based on your recent land record update, you are now eligible for the PM Kisan scheme. 
-                      The AI has pre-filled <strong className="text-gray-800 font-bold">80%</strong> of your application using verified digital locker data.
-                    </p>
-                  </div>
-                  
-                  <div>
-                    <Button className="bg-foreground hover:bg-foreground/90 text-background px-8 py-2 rounded-xl shadow-diffusion active:scale-95 transition-transform duration-200">
-                      Review Application
-                    </Button>
-                  </div>
-                </Card>
-              </div>
-
-              {/* ── Active Applications Stat ── */}
-              <div className="lg:col-span-1">
-                <Card className="p-8 bg-card shadow-ambient border-0 h-full flex flex-col justify-between group rounded-[2rem]">
-                  <div className="flex justify-between items-start">
-                    <h3 className="text-lg font-medium text-muted-foreground">Active Applications</h3>
-                    <div className="w-12 h-12 rounded-2xl bg-muted flex items-center justify-center">
-                      <ClipboardList className="w-6 h-6 text-primary group-hover:text-secondary transition-colors" />
-                    </div>
-                  </div>
-                  <div className="text-6xl font-bold text-foreground tracking-tighter">
-                    03
-                  </div>
-                </Card>
+                <h3 className="font-headline-md text-body-lg font-semibold text-primary mb-2">AI Insights: PM Kisan Samman Nidhi</h3>
+                <p className="font-body-md text-body-md text-on-surface-variant mb-3 max-w-2xl">Based on your recent land record update, you are now eligible for the PM Kisan scheme. The AI has pre-filled 80% of your application using verified digital locker data.</p>
+                <div className="flex gap-2">
+                  <span className="bg-surface-container-highest text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm">High Match</span>
+                  <span className="bg-surface-container-highest text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm">Requires 1 Doc</span>
+                </div>
               </div>
             </div>
+            <button className="bg-primary text-on-primary px-6 py-3 rounded-lg font-label-md text-label-md hover:bg-primary-container transition-colors shrink-0 flex items-center gap-2">
+              Review Application
+              <span className="material-symbols-outlined text-sm">arrow_forward</span>
+            </button>
+          </div>
+        </section>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-              {/* ── Quick Actions ── */}
-              <div className="lg:col-span-2">
-                <h2 className="font-semibold text-gray-800 mb-6 text-lg">Quick Actions</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                  {QUICK_LINKS.map((link, idx) => (
-                    <motion.div
-                      key={link.label}
-                      initial={{ opacity: 0, y: 16 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.1 + idx * 0.05, ease: 'easeOut' }}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <Link href={p(link.href)} className="block outline-none h-full">
-                        <Card className="p-6 h-full flex flex-col bg-card border-0 shadow-ambient hover:shadow-premium transition-shadow duration-300 rounded-3xl">
-                          <div className="w-12 h-12 mb-4 rounded-2xl bg-muted flex items-center justify-center flex-shrink-0 text-primary">
-                            <link.icon className="w-6 h-6" />
-                          </div>
-                          <div className="mt-auto">
-                            <p className="font-semibold text-foreground text-sm mb-1">{link.label}</p>
-                            <p className="text-xs text-muted-foreground">{link.desc}</p>
-                          </div>
-                        </Card>
-                      </Link>
-                    </motion.div>
-                  ))}
-                </div>
+        {/* Quick Actions (Grid of 3) */}
+        <section className="col-span-12 md:col-span-8 lg:col-span-9 mt-sm">
+          <h2 className="font-headline-md text-body-lg font-semibold text-primary mb-4">Quick Actions</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-sm">
+            <Link className="depth-1 bg-surface-container-lowest rounded-xl p-sm flex flex-col items-center text-center hover:depth-2 transition-all hover:-translate-y-1 group" href={p("/schemes")}>
+              <div className="w-14 h-14 rounded-full bg-surface-container-low flex items-center justify-center mb-3 group-hover:bg-secondary-fixed/20 transition-colors">
+                <span className="material-symbols-outlined text-primary text-3xl">description</span>
               </div>
+              <h4 className="font-label-md text-label-md text-on-surface mb-1">Apply for Scheme</h4>
+              <p className="font-body-md text-label-sm text-outline">Browse 42+ options</p>
+            </Link>
+            <Link className="depth-1 bg-surface-container-lowest rounded-xl p-sm flex flex-col items-center text-center hover:depth-2 transition-all hover:-translate-y-1 group" href={p("/complaints")}>
+              <div className="w-14 h-14 rounded-full bg-surface-container-low flex items-center justify-center mb-3 group-hover:bg-secondary-fixed/20 transition-colors">
+                <span className="material-symbols-outlined text-primary text-3xl">track_changes</span>
+              </div>
+              <h4 className="font-label-md text-label-md text-on-surface mb-1">Track Complaint</h4>
+              <p className="font-body-md text-label-sm text-outline">2 active issues</p>
+            </Link>
+            <Link className="depth-1 bg-surface-container-lowest rounded-xl p-sm flex flex-col items-center text-center hover:depth-2 transition-all hover:-translate-y-1 group" href={p("/documents")}>
+              <div className="w-14 h-14 rounded-full bg-surface-container-low flex items-center justify-center mb-3 group-hover:bg-secondary-fixed/20 transition-colors">
+                <span className="material-symbols-outlined text-primary text-3xl">cloud_upload</span>
+              </div>
+              <h4 className="font-label-md text-label-md text-on-surface mb-1">Upload Documents</h4>
+              <p className="font-body-md text-label-sm text-outline">DigiLocker Sync</p>
+            </Link>
+          </div>
+        </section>
 
-              {/* ── Resolved Issues Stat ── */}
-              <div className="lg:col-span-1 pt-[52px]">
-                <Card className="p-8 bg-card shadow-ambient border-0 h-full flex flex-col justify-between group rounded-[2rem]">
-                  <div className="flex justify-between items-start">
-                    <h3 className="text-lg font-medium text-muted-foreground">Resolved Issues</h3>
-                    <div className="w-12 h-12 rounded-2xl bg-muted flex items-center justify-center">
-                      <CheckCircle2 className="w-6 h-6 text-primary group-hover:text-secondary transition-colors" />
-                    </div>
-                  </div>
-                  <div className="text-6xl font-bold text-foreground tracking-tighter">
-                    12
-                  </div>
-                </Card>
+        {/* Statistics (Side Column on Desktop) */}
+        <section className="col-span-12 md:col-span-4 lg:col-span-3 mt-sm">
+          <h2 className="font-headline-md text-body-lg font-semibold text-primary mb-4 md:opacity-0 hidden md:block">Stats</h2>
+          <div className="flex flex-col gap-sm">
+            <div className="depth-1 bg-surface-container-lowest rounded-xl p-sm flex items-center justify-between border-l-4 border-secondary">
+              <div>
+                <p className="font-label-sm text-label-sm text-outline uppercase">Active Applications</p>
+                <p className="font-display-lg text-headline-lg font-bold text-primary">03</p>
               </div>
+              <span className="material-symbols-outlined text-outline text-3xl opacity-50">pending_actions</span>
             </div>
+            <div className="depth-1 bg-surface-container-lowest rounded-xl p-sm flex items-center justify-between border-l-4 border-tertiary-container">
+              <div>
+                <p className="font-label-sm text-label-sm text-outline uppercase">Resolved Issues</p>
+                <p className="font-display-lg text-headline-lg font-bold text-primary">12</p>
+              </div>
+              <span className="material-symbols-outlined text-outline text-3xl opacity-50">done_all</span>
+            </div>
+          </div>
+        </section>
 
-            <div>
-              <h2 className="font-semibold text-gray-800 mb-6 text-lg">Recent Activity</h2>
-              <div className="pl-2">
-                <div className="relative border-l-2 border-gray-200 ml-3 pb-8 pl-8">
-                  <div className="absolute w-3 h-3 bg-gray-300 rounded-full -left-[7px] top-1"></div>
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <p className="font-medium text-gray-800 text-sm">Application Approved: Subsidized Solar</p>
-                      <p className="text-xs text-gray-500 mt-1">Timestamp at 11:33 PM</p>
-                    </div>
-                    <Badge variant="secondary" className="bg-green-100 text-green-700 hover:bg-green-100 border-0 shadow-sm px-3 rounded-full text-xs">Approved</Badge>
-                  </div>
+        {/* Recent Activity Timeline */}
+        <section className="col-span-12 mt-lg">
+          <h2 className="font-headline-md text-body-lg font-semibold text-primary mb-6">Recent Activity</h2>
+          <div className="depth-1 bg-surface-container-lowest rounded-xl p-md">
+            <div className="relative border-l-2 border-surface-variant ml-4 space-y-8 pb-4">
+              {/* Timeline Item 1 */}
+              <div className="relative pl-8">
+                <div className="absolute -left-2 top-0 w-4 h-4 rounded-full bg-secondary ring-4 ring-surface-container-lowest"></div>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1">
+                  <h4 className="font-label-md text-label-md font-semibold text-on-surface">Application Approved: Subsidized Solar</h4>
+                  <span className="font-label-sm text-label-sm text-outline">Today, 10:42 AM</span>
                 </div>
-                
-                <div className="relative border-l-2 border-gray-200 ml-3 pb-8 pl-8">
-                  <div className="absolute w-3 h-3 bg-gray-300 rounded-full -left-[7px] top-1"></div>
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <p className="font-medium text-gray-800 text-sm">Document Synced from DigiLocker</p>
-                      <p className="text-xs text-gray-500 mt-1">Timestamp at 07:12 AM - Salary Proof_XY... pdf</p>
-                    </div>
-                  </div>
+                <p className="font-body-md text-body-md text-on-surface-variant mb-2">Your application under the PM Surya Ghar scheme has been verified and approved by the district nodal officer.</p>
+                <span className="inline-block px-2 py-1 bg-[#e6f4ea] text-[#1e8e3e] font-label-sm text-label-sm rounded-full">Approved</span>
+              </div>
+              {/* Timeline Item 2 */}
+              <div className="relative pl-8">
+                <div className="absolute -left-2 top-0 w-4 h-4 rounded-full bg-surface-variant ring-4 ring-surface-container-lowest"></div>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1">
+                  <h4 className="font-label-md text-label-md font-medium text-on-surface">Document Synced from DigiLocker</h4>
+                  <span className="font-label-sm text-label-sm text-outline">Yesterday, 04:15 PM</span>
                 </div>
-                
-                <div className="relative border-l-2 border-transparent ml-3 pl-8">
-                  <div className="absolute w-3 h-3 bg-gray-300 rounded-full -left-[7px] top-1"></div>
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <p className="font-medium text-gray-800 text-sm">Profile Match Update</p>
+                <p className="font-body-md text-body-md text-on-surface-variant">Aadhaar Card successfully synchronized and verified.</p>
+              </div>
+              {/* Timeline Item 3 */}
+              <div className="relative pl-8">
+                <div className="absolute -left-2 top-0 w-4 h-4 rounded-full bg-surface-variant ring-4 ring-surface-container-lowest"></div>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1">
+                  <h4 className="font-label-md text-label-md font-medium text-on-surface">Grievance Registered: Civic Maintenance</h4>
+                  <span className="font-label-sm text-label-sm text-outline">Oct 12, 2024</span>
                 </div>
+                <p className="font-body-md text-body-md text-on-surface-variant mb-2">Complaint regarding streetlight malfunction in Sector 4 assigned to local municipality.</p>
+                <span className="inline-block px-2 py-1 bg-[#fff8e1] text-[#f57f17] font-label-sm text-label-sm rounded-full">In Progress</span>
               </div>
             </div>
           </div>
-        </div>
+        </section>
+      </div>
+
+      {/* AI Assistant Floating Bubble (Optional, can be globally placed or just here) */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <Link href={p("/chat")} className="w-14 h-14 rounded-full bg-primary text-on-primary shadow-2xl flex items-center justify-center hover:scale-110 transition-transform ai-glow group relative">
+          <span className="material-symbols-outlined text-2xl group-hover:rotate-12 transition-transform duration-300">smart_toy</span>
+          <span className="absolute -top-1 -right-1 flex h-3 w-3">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary-fixed opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-secondary"></span>
+          </span>
+        </Link>
+      </div>
     </div>
   );
 }

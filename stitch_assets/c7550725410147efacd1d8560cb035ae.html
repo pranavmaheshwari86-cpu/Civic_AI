@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Civic AI - AI Assistant</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error": "#ba1a1a",
+                      "secondary-fixed": "#dbe1ff",
+                      "on-tertiary-fixed-variant": "#70380b",
+                      "secondary": "#0051d5",
+                      "on-secondary-fixed-variant": "#003ea8",
+                      "surface-variant": "#e5e1e9",
+                      "secondary-container": "#316bf3",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-container": "#5f2b00",
+                      "error-container": "#ffdad6",
+                      "on-background": "#1b1b21",
+                      "surface": "#fcf8ff",
+                      "on-surface": "#1b1b21",
+                      "tertiary-fixed-dim": "#ffb688",
+                      "on-secondary-fixed": "#00174b",
+                      "outline-variant": "#c8c5d3",
+                      "outline": "#777682",
+                      "surface-container-low": "#f6f2fa",
+                      "surface-container-highest": "#e5e1e9",
+                      "secondary-fixed-dim": "#b4c5ff",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-fixed": "#311300",
+                      "on-primary-fixed-variant": "#3e3c8f",
+                      "on-secondary-container": "#fefcff",
+                      "surface-tint": "#5654a8",
+                      "inverse-surface": "#303036",
+                      "on-primary-container": "#9c9af4",
+                      "on-primary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "primary-container": "#312e81",
+                      "inverse-on-surface": "#f3eff7",
+                      "on-tertiary-container": "#de915e",
+                      "surface-container": "#f0ecf4",
+                      "tertiary-fixed": "#ffdbc7",
+                      "surface-dim": "#dcd9e0",
+                      "tertiary": "#3e1a00",
+                      "on-surface-variant": "#474651",
+                      "primary-fixed": "#e2dfff",
+                      "inverse-primary": "#c3c0ff",
+                      "primary": "#1a146b",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed-dim": "#c3c0ff",
+                      "surface-bright": "#fcf8ff",
+                      "background": "#fcf8ff",
+                      "surface-container-high": "#eae7ef",
+                      "on-primary-fixed": "#100563"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "base": "4px",
+                      "md": "24px",
+                      "sm": "16px",
+                      "xl": "64px",
+                      "xs": "8px",
+                      "lg": "40px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "display-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-lg-mobile": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Subtle pulsing animation for AI thinking */
+        @keyframes ai-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 81, 213, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 81, 213, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 81, 213, 0); }
+        }
+        .ai-thinking-orb {
+            animation: ai-pulse 2s infinite;
+        }
+        
+        /* Custom Scrollbar for chat area */
+        .chat-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .chat-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .chat-scroll::-webkit-scrollbar-thumb {
+            background-color: rgba(119, 118, 130, 0.2);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background h-screen overflow-hidden flex font-body-md">
+<!-- Desktop Sidebar (Semantic Shell) -->
+<nav class="hidden md:flex flex-col p-sm gap-base h-full bg-surface-container-lowest border-r border-outline-variant/20 shadow-xl w-72 fixed left-0 top-0 z-40">
+<!-- Brand / Header -->
+<div class="px-sm py-md mb-md">
+<h1 class="font-headline-md text-headline-md font-extrabold text-primary tracking-tight">Civic AI</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Citizen Portal</p>
+</div>
+<!-- CTA -->
+<button class="mb-sm mx-xs bg-primary text-on-primary py-sm px-md rounded-lg font-label-md text-label-md flex items-center justify-center gap-sm hover:scale-[1.02] active:scale-95 transition-all shadow-sm">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+            Ask AI Assistant
+        </button>
+<!-- Navigation Tabs -->
+<div class="flex flex-col gap-xs flex-grow overflow-y-auto">
+<a class="flex items-center gap-sm px-md py-xs text-on-surface-variant hover:bg-surface-container-high transition-all hover:bg-secondary-fixed/10 duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex items-center gap-sm px-md py-xs bg-secondary-container text-on-secondary-container font-bold rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined fill" data-icon="temp_preferences_custom">temp_preferences_custom</span>
+<span class="font-label-md text-label-md">AI Insights</span>
+</a>
+<a class="flex items-center gap-sm px-md py-xs text-on-surface-variant hover:bg-surface-container-high transition-all hover:bg-secondary-fixed/10 duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-md text-label-md">Schemes</span>
+</a>
+<a class="flex items-center gap-sm px-md py-xs text-on-surface-variant hover:bg-surface-container-high transition-all hover:bg-secondary-fixed/10 duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="assignment_turned_in">assignment_turned_in</span>
+<span class="font-label-md text-label-md">Applications</span>
+</a>
+<a class="flex items-center gap-sm px-md py-xs text-on-surface-variant hover:bg-surface-container-high transition-all hover:bg-secondary-fixed/10 duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</a>
+<!-- Recent Conversations section -->
+<div class="mt-xl px-xs">
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-sm px-sm">Recent</p>
+<a class="flex items-center gap-xs px-sm py-xs text-on-surface-variant hover:text-primary transition-colors text-sm truncate rounded-md hover:bg-surface-container-low" href="#">
+<span class="material-symbols-outlined text-[16px]" data-icon="chat_bubble_outline">chat_bubble_outline</span>
+                    Health schemes for seniors
+                </a>
+<a class="flex items-center gap-xs px-sm py-xs text-on-surface-variant hover:text-primary transition-colors text-sm truncate rounded-md hover:bg-surface-container-low" href="#">
+<span class="material-symbols-outlined text-[16px]" data-icon="chat_bubble_outline">chat_bubble_outline</span>
+                    Ration card application status
+                </a>
+</div>
+</div>
+<!-- Footer Tabs -->
+<div class="mt-auto flex flex-col gap-xs border-t border-outline-variant/20 pt-sm">
+<a class="flex items-center gap-sm px-md py-xs text-on-surface-variant hover:bg-surface-container-high transition-all hover:bg-secondary-fixed/10 duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-sm px-md py-xs text-on-surface-variant hover:bg-surface-container-high transition-all hover:bg-secondary-fixed/10 duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="font-label-md text-label-md">Help</span>
+</a>
+<!-- User Profile Avatar Placeholder -->
+<div class="flex items-center gap-sm px-md py-xs mt-xs">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-sm">
+                    U
+                </div>
+<span class="font-label-md text-label-md text-on-surface">User Profile</span>
+</div>
+</div>
+</nav>
+<!-- Main Chat Canvas -->
+<main class="flex-1 flex flex-col h-full md:ml-72 bg-surface relative">
+<!-- Mobile Header (Hidden on Desktop) -->
+<header class="md:hidden flex justify-between items-center h-16 px-gutter border-b border-outline-variant/30 bg-surface/80 backdrop-blur-xl z-30 fixed top-0 w-full">
+<h1 class="text-headline-md font-headline-md font-bold tracking-tight text-primary">Civic AI</h1>
+<div class="flex gap-sm text-primary">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</div>
+</header>
+<!-- Chat History Area -->
+<div class="flex-1 overflow-y-auto chat-scroll pt-20 md:pt-md pb-32 px-gutter lg:px-xl max-w-4xl mx-auto w-full relative z-10">
+<!-- Welcome / Empty State -->
+<div class="py-xl flex flex-col items-center justify-center text-center opacity-0 animate-[fadeIn_0.5s_ease-out_forwards]">
+<div class="w-20 h-20 mb-md rounded-2xl bg-gradient-to-br from-primary-container to-secondary-container flex items-center justify-center shadow-lg ai-thinking-orb">
+<span class="material-symbols-outlined text-4xl text-on-primary-container" data-icon="smart_toy">smart_toy</span>
+</div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background mb-sm">Good morning, Citizen.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">I'm Bharat AI, your sovereign digital assistant. How can I help you navigate government services today?</p>
+<!-- Suggested Prompts Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-sm mt-xl w-full max-w-2xl text-left">
+<button class="bg-surface-container-lowest border border-outline-variant/50 p-sm rounded-xl hover:shadow-[0_12px_34px_-10px_rgba(15,23,42,0.08)] hover:border-secondary transition-all group">
+<div class="flex items-center gap-xs text-secondary mb-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="health_and_safety">health_and_safety</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wide">Healthcare</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Find health schemes for senior citizens</p>
+</button>
+<button class="bg-surface-container-lowest border border-outline-variant/50 p-sm rounded-xl hover:shadow-[0_12px_34px_-10px_rgba(15,23,42,0.08)] hover:border-secondary transition-all group">
+<div class="flex items-center gap-xs text-tertiary-container mb-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="credit_card">credit_card</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wide">Documents</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">How do I apply for a new ration card?</p>
+</button>
+<button class="bg-surface-container-lowest border border-outline-variant/50 p-sm rounded-xl hover:shadow-[0_12px_34px_-10px_rgba(15,23,42,0.08)] hover:border-secondary transition-all group">
+<div class="flex items-center gap-xs text-primary mb-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="school">school</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wide">Education</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Scholarships for undergraduate students</p>
+</button>
+<button class="bg-surface-container-lowest border border-outline-variant/50 p-sm rounded-xl hover:shadow-[0_12px_34px_-10px_rgba(15,23,42,0.08)] hover:border-secondary transition-all group">
+<div class="flex items-center gap-xs text-error mb-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="report_problem">report_problem</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wide">Grievance</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Report an issue with local water supply</p>
+</button>
+</div>
+</div>
+<!-- Example Conversation (Hidden by default, shown for UI demonstration) -->
+<!--
+            <div class="flex flex-col gap-xl py-md">
+                <div class="flex gap-md max-w-3xl ml-auto justify-end">
+                    <div class="bg-surface-container-low px-md py-sm rounded-2xl rounded-tr-sm text-on-surface font-body-md text-body-md shadow-sm">
+                        What are the eligibility criteria for the Ayushman Bharat Yojana?
+                    </div>
+                </div>
+
+                <div class="flex gap-md max-w-3xl">
+                    <div class="w-8 h-8 rounded-full bg-primary-container flex-shrink-0 flex items-center justify-center text-on-primary-container shadow-sm mt-xs">
+                        <span class="material-symbols-outlined text-[18px]" data-icon="smart_toy">smart_toy</span>
+                    </div>
+                    <div class="flex flex-col gap-sm">
+                        <div class="text-on-surface font-body-md text-body-md prose prose-slate">
+                            <p>The Ayushman Bharat Pradhan Mantri Jan Arogya Yojana (PM-JAY) provides health cover of ₹5 lakhs per family per year for secondary and tertiary care hospitalization. Eligibility is primarily based on the Socio-Economic Caste Census (SECC) 2011 data.</p>
+                            <p>Here are the broad eligibility categories for rural and urban areas:</p>
+                        </div>
+                        
+                        <div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-sm shadow-sm flex items-start gap-sm mt-xs w-full sm:w-80 hover:shadow-[0_12px_34px_-10px_rgba(15,23,42,0.08)] transition-shadow">
+                             <div class="bg-secondary-container/10 p-xs rounded-lg text-secondary">
+                                 <span class="material-symbols-outlined" data-icon="health_and_safety">health_and_safety</span>
+                             </div>
+                             <div class="flex-1">
+                                 <h4 class="font-label-md text-label-md font-semibold text-on-surface">Ayushman Bharat PM-JAY</h4>
+                                 <p class="font-label-sm text-label-sm text-on-surface-variant mt-1 line-clamp-2">Check your eligibility instantly using your mobile number or Ration Card.</p>
+                             </div>
+                             <button class="bg-primary/10 text-primary hover:bg-primary hover:text-on-primary rounded-lg px-3 py-1 font-label-sm text-label-sm transition-colors mt-auto self-end">Check</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            -->
+<!-- AI Thinking Indicator (Hidden) -->
+<!--
+             <div class="flex gap-md max-w-3xl mt-md">
+                <div class="w-8 h-8 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center text-outline mt-xs ai-thinking-orb border-2 border-secondary/20">
+                    <span class="material-symbols-outlined text-[18px]" data-icon="more_horiz">more_horiz</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-outline font-label-md text-label-md animate-pulse">Searching official databases...</span>
+                </div>
+            </div>
+            -->
+</div>
+<!-- Input Area Container (Fixed at bottom) -->
+<div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-surface via-surface to-transparent pt-xl pb-md px-gutter z-20 md:ml-0">
+<div class="max-w-4xl mx-auto relative">
+<!-- Glowing effect behind input -->
+<div class="absolute -inset-1 bg-gradient-to-r from-primary/20 via-secondary/20 to-tertiary-container/20 rounded-full blur opacity-70 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+<div class="relative bg-surface-container-lowest border border-outline-variant/50 rounded-full shadow-lg flex items-center pl-sm pr-xs py-xs focus-within:border-secondary focus-within:ring-2 focus-within:ring-secondary/20 transition-all">
+<button class="p-xs text-outline hover:text-primary transition-colors rounded-full hover:bg-surface-container-low" title="Upload Document">
+<span class="material-symbols-outlined" data-icon="attach_file">attach_file</span>
+</button>
+<input class="flex-1 bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-surface placeholder:text-outline py-sm px-xs h-12" placeholder="Ask Bharat AI..." type="text"/>
+<button class="p-sm bg-primary text-on-primary rounded-full hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-sm active:scale-95 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="arrow_upward">arrow_upward</span>
+</button>
+</div>
+<div class="text-center mt-xs">
+<p class="font-label-sm text-label-sm text-outline text-[10px]">AI can make mistakes. Verify important information with official sources.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile Bottom Navigation (Hidden on Desktop) -->
+<nav class="md:hidden fixed bottom-0 w-full bg-surface-container-lowest border-t border-outline-variant/30 flex justify-around items-center h-16 px-gutter z-50 pb-safe">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] font-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-secondary" href="#">
+<span class="material-symbols-outlined fill" data-icon="temp_preferences_custom">temp_preferences_custom</span>
+<span class="text-[10px] font-label-sm font-bold">AI</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="text-[10px] font-label-sm">Schemes</span>
+</a>
+</nav>
+<style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</body></html>

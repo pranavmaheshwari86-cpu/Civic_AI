@@ -2,9 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { useAppStore } from '@/lib/store';
-import { Send, Bot, User, Loader2, HeartPulse, FileText, GraduationCap, ShieldAlert, Paperclip, Mic, Sparkles } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
-import { Card } from '@/components/ui/card';
 
 interface Message {
   id: string;
@@ -46,6 +44,12 @@ export default function ChatPage() {
     }
   }, [historyData]);
 
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages, isTyping]);
+
   const sendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
@@ -56,7 +60,7 @@ export default function ChatPage() {
     setIsTyping(true);
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/chat/stream`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/api/v1/chat/message`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -125,129 +129,124 @@ export default function ChatPage() {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-80px)] px-6 lg:px-12 py-8 max-w-[1400px] mx-auto w-full">
-      <div className="flex-1 overflow-y-auto space-y-6 pb-24 scrollbar-hide">
+    <div className="flex-1 flex flex-col h-full bg-surface relative min-h-screen">
+      {/* Chat History Area */}
+      <div className="flex-1 overflow-y-auto chat-scroll pt-20 md:pt-md pb-32 px-gutter lg:px-xl max-w-4xl mx-auto w-full relative z-10">
+        
         {messages.length === 0 && (
-          <div className="h-full flex flex-col items-center justify-center space-y-12">
-            <div className="text-center space-y-4">
-              <div className="inline-flex items-center justify-center p-4 bg-primary/10 rounded-[2rem] mb-4">
-                <Sparkles className="w-10 h-10 text-primary" />
-              </div>
-              <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight">Namaste! I am Bharat AI</h1>
-              <p className="text-lg text-muted-foreground">Your personal civic assistant. How can I help you today?</p>
+          <div className="py-xl flex flex-col items-center justify-center text-center opacity-0 animate-[fadeIn_0.5s_ease-out_forwards] animate-fadeIn">
+            <div className="w-20 h-20 mb-md rounded-2xl bg-gradient-to-br from-primary-container to-secondary-container flex items-center justify-center shadow-lg ai-thinking-orb">
+              <span className="material-symbols-outlined text-4xl text-on-primary-container">smart_toy</span>
             </div>
+            <h2 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background mb-sm">Good morning, Citizen.</h2>
+            <p className="font-body-lg text-body-lg text-on-surface-variant max-w-xl">I'm Bharat AI, your sovereign digital assistant. How can I help you navigate government services today?</p>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-5xl">
-              <button onClick={() => setInput('Find healthcare schemes')} className="text-left outline-none group">
-                <Card className="p-6 h-full flex flex-col bg-card shadow-ambient border-0 hover:shadow-premium hover:-translate-y-1 transition-all duration-300 rounded-[1.5rem]">
-                  <div className="w-12 h-12 mb-4 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <HeartPulse className="w-6 h-6" />
-                  </div>
-                  <h3 className="font-bold text-foreground mb-2">Healthcare</h3>
-                  <p className="text-sm text-muted-foreground">Find Ayushman Bharat hospitals & claim status.</p>
-                </Card>
+            {/* Suggested Prompts Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-sm mt-xl w-full max-w-2xl text-left">
+              <button onClick={() => setInput('Find health schemes for senior citizens')} className="bg-surface-container-lowest border border-outline-variant/50 p-sm rounded-xl hover:shadow-[0_12px_34px_-10px_rgba(15,23,42,0.08)] hover:border-secondary transition-all group text-left outline-none">
+                <div className="flex items-center gap-xs text-secondary mb-xs">
+                  <span className="material-symbols-outlined text-[18px]">health_and_safety</span>
+                  <span className="font-label-sm text-label-sm uppercase tracking-wide">Healthcare</span>
+                </div>
+                <p className="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Find health schemes for senior citizens</p>
               </button>
               
-              <button onClick={() => setInput('Help with documents')} className="text-left outline-none group">
-                <Card className="p-6 h-full flex flex-col bg-card shadow-ambient border-0 hover:shadow-premium hover:-translate-y-1 transition-all duration-300 rounded-[1.5rem]">
-                  <div className="w-12 h-12 mb-4 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <FileText className="w-6 h-6" />
-                  </div>
-                  <h3 className="font-bold text-foreground mb-2">Documents</h3>
-                  <p className="text-sm text-muted-foreground">Sync DigiLocker & track applications.</p>
-                </Card>
+              <button onClick={() => setInput('How do I apply for a new ration card?')} className="bg-surface-container-lowest border border-outline-variant/50 p-sm rounded-xl hover:shadow-[0_12px_34px_-10px_rgba(15,23,42,0.08)] hover:border-secondary transition-all group text-left outline-none">
+                <div className="flex items-center gap-xs text-tertiary-container mb-xs">
+                  <span className="material-symbols-outlined text-[18px]">credit_card</span>
+                  <span className="font-label-sm text-label-sm uppercase tracking-wide">Documents</span>
+                </div>
+                <p className="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">How do I apply for a new ration card?</p>
               </button>
               
-              <button onClick={() => setInput('Education scholarships')} className="text-left outline-none group">
-                <Card className="p-6 h-full flex flex-col bg-card shadow-ambient border-0 hover:shadow-premium hover:-translate-y-1 transition-all duration-300 rounded-[1.5rem]">
-                  <div className="w-12 h-12 mb-4 rounded-2xl bg-green-50 text-green-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <GraduationCap className="w-6 h-6" />
-                  </div>
-                  <h3 className="font-bold text-foreground mb-2">Education</h3>
-                  <p className="text-sm text-muted-foreground">Find scholarships & skill programs.</p>
-                </Card>
+              <button onClick={() => setInput('Scholarships for undergraduate students')} className="bg-surface-container-lowest border border-outline-variant/50 p-sm rounded-xl hover:shadow-[0_12px_34px_-10px_rgba(15,23,42,0.08)] hover:border-secondary transition-all group text-left outline-none">
+                <div className="flex items-center gap-xs text-primary mb-xs">
+                  <span className="material-symbols-outlined text-[18px]">school</span>
+                  <span className="font-label-sm text-label-sm uppercase tracking-wide">Education</span>
+                </div>
+                <p className="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Scholarships for undergraduate students</p>
               </button>
               
-              <button onClick={() => setInput('File a grievance')} className="text-left outline-none group">
-                <Card className="p-6 h-full flex flex-col bg-card shadow-ambient border-0 hover:shadow-premium hover:-translate-y-1 transition-all duration-300 rounded-[1.5rem]">
-                  <div className="w-12 h-12 mb-4 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <ShieldAlert className="w-6 h-6" />
-                  </div>
-                  <h3 className="font-bold text-foreground mb-2">Grievance</h3>
-                  <p className="text-sm text-muted-foreground">Report civic issues to authorities.</p>
-                </Card>
+              <button onClick={() => setInput('Report an issue with local water supply')} className="bg-surface-container-lowest border border-outline-variant/50 p-sm rounded-xl hover:shadow-[0_12px_34px_-10px_rgba(15,23,42,0.08)] hover:border-secondary transition-all group text-left outline-none">
+                <div className="flex items-center gap-xs text-error mb-xs">
+                  <span className="material-symbols-outlined text-[18px]">report_problem</span>
+                  <span className="font-label-sm text-label-sm uppercase tracking-wide">Grievance</span>
+                </div>
+                <p className="font-body-md text-body-md text-on-surface group-hover:text-primary transition-colors">Report an issue with local water supply</p>
               </button>
             </div>
           </div>
         )}
-        {messages.map((msg) => (
-          <div key={msg.id} className={`flex gap-3 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-            {msg.role === 'assistant' && (
-              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                <Bot className="w-5 h-5 text-primary" />
-              </div>
-            )}
-            
-            <div className={`px-5 py-4 rounded-2xl max-w-[85%] shadow-sm ${
-              msg.role === 'user' 
-                ? 'bg-primary text-primary-foreground rounded-br-sm' 
-                : 'bg-card text-foreground border border-border/50 rounded-bl-sm'
-            }`}>
-              <div className="whitespace-pre-wrap">{msg.content}</div>
-              {msg.isStreaming && <span className="inline-block w-2 h-4 ml-1 bg-primary animate-pulse" />}
-            </div>
 
-            {msg.role === 'user' && (
-              <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center shrink-0">
-                <User className="w-5 h-5 text-secondary-foreground" />
+        <div className="flex flex-col gap-xl py-md">
+          {messages.map((msg) => (
+            <div key={msg.id} className={`flex gap-md max-w-3xl ${msg.role === 'user' ? 'ml-auto justify-end' : ''}`}>
+              {msg.role === 'assistant' && (
+                <div className="w-8 h-8 rounded-full bg-primary-container flex-shrink-0 flex items-center justify-center text-on-primary-container shadow-sm mt-xs">
+                  <span className="material-symbols-outlined text-[18px]">smart_toy</span>
+                </div>
+              )}
+              
+              {msg.role === 'user' ? (
+                <div className="bg-surface-container-low px-md py-sm rounded-2xl rounded-tr-sm text-on-surface font-body-md text-body-md shadow-sm whitespace-pre-wrap">
+                  {msg.content}
+                </div>
+              ) : (
+                <div className="flex flex-col gap-sm">
+                  <div className="text-on-surface font-body-md text-body-md prose prose-slate">
+                    <div className="whitespace-pre-wrap">{msg.content}</div>
+                    {msg.isStreaming && <span className="inline-block w-2 h-4 ml-1 bg-primary animate-pulse" />}
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+          
+          {isTyping && !messages.find(m => m.isStreaming) && (
+            <div className="flex gap-md max-w-3xl mt-md">
+              <div className="w-8 h-8 rounded-full bg-surface-container-high flex-shrink-0 flex items-center justify-center text-outline mt-xs ai-thinking-orb border-2 border-secondary/20">
+                <span className="material-symbols-outlined text-[18px]">more_horiz</span>
               </div>
-            )}
-          </div>
-        ))}
-        
-        {isTyping && !messages.find(m => m.isStreaming) && (
-          <div className="flex gap-3 justify-start">
-            <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-              <Bot className="w-5 h-5 text-primary" />
+              <div className="flex items-center">
+                <span className="text-outline font-label-md text-label-md animate-pulse">Searching official databases...</span>
+              </div>
             </div>
-            <div className="px-4 py-3 rounded-2xl bg-muted border border-border rounded-tl-sm flex items-center gap-2">
-              <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
-              <span className="text-sm text-muted-foreground">Thinking...</span>
-            </div>
-          </div>
-        )}
-        
-        <div ref={messagesEndRef} />
+          )}
+
+          <div ref={messagesEndRef} />
+        </div>
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 lg:left-64 p-6 bg-gradient-to-t from-background via-background to-transparent pointer-events-none flex justify-center">
-        <div className="w-full max-w-4xl pointer-events-auto">
-          <form onSubmit={sendMessage} className="relative bg-card shadow-premium border border-white/20 rounded-full flex items-center p-2 backdrop-blur-xl bg-white/60 dark:bg-black/40">
-            <button type="button" className="p-3 text-muted-foreground hover:text-foreground transition-colors shrink-0">
-              <Paperclip className="w-5 h-5" />
+      {/* Input Area Container (Fixed at bottom) */}
+      <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-surface via-surface to-transparent pt-xl pb-md px-gutter z-20 md:ml-0">
+        <div className="max-w-4xl mx-auto relative group">
+          {/* Glowing effect behind input */}
+          <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-secondary/20 to-tertiary-container/20 rounded-full blur opacity-70 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 pointer-events-none"></div>
+          
+          <form onSubmit={sendMessage} className="relative bg-surface-container-lowest border border-outline-variant/50 rounded-full shadow-lg flex items-center pl-sm pr-xs py-xs focus-within:border-secondary focus-within:ring-2 focus-within:ring-secondary/20 transition-all">
+            <button type="button" className="p-xs text-outline hover:text-primary transition-colors rounded-full hover:bg-surface-container-low" title="Upload Document">
+              <span className="material-symbols-outlined">attach_file</span>
             </button>
-            <input
+            <input 
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask anything..."
-              className="flex-1 bg-transparent border-0 py-3 px-2 text-base focus:outline-none placeholder:text-muted-foreground/70"
+              className="flex-1 bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-surface placeholder:text-outline py-sm px-xs h-12 outline-none" 
+              placeholder="Ask Bharat AI..."
               disabled={isTyping && !messages.find(m => m.isStreaming)}
             />
-            <button type="button" className="p-3 text-muted-foreground hover:text-foreground transition-colors shrink-0">
-              <Mic className="w-5 h-5" />
-            </button>
-            <button
+            <button 
               type="submit"
               disabled={!input.trim() || (isTyping && !messages.find(m => m.isStreaming))}
-              className="ml-2 p-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-all disabled:opacity-50 shadow-sm shrink-0"
+              className="p-sm bg-primary text-on-primary rounded-full hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-sm active:scale-95 flex items-center justify-center disabled:opacity-50"
             >
-              <Send className="w-5 h-5" />
+              <span className="material-symbols-outlined">arrow_upward</span>
             </button>
           </form>
-          <p className="text-[11px] text-center text-muted-foreground mt-3 font-medium">
-            AI can make mistakes. Verify important information on official government portals.
-          </p>
+          
+          <div className="text-center mt-xs">
+            <p className="font-label-sm text-label-sm text-outline text-[10px]">AI can make mistakes. Verify important information with official sources.</p>
+          </div>
         </div>
       </div>
     </div>

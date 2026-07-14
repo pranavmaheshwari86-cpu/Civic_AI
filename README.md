@@ -244,3 +244,42 @@ npm run lint
 ## 📄 License
 
 MIT License — see [LICENSE](LICENSE) for details.
+
+---
+
+## 🎭 Playwright MCP & Testing
+
+This project includes the official **Playwright MCP Server** (`@playwright/mcp`) and End-to-End testing via `@playwright/test`. This setup allows AI agents to inspect and automate the browser for development, testing, and visual verification.
+
+### How to use Playwright MCP
+
+The MCP server configuration is located in `mcp.json` at the root of the project. If you are using an AI assistant like Cline or Claude Desktop, you can register it using:
+
+```json
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp"]
+    }
+  }
+}
+```
+
+### Running Tests
+
+We have configured Playwright with sensible defaults in `playwright.config.ts`, including automatic screenshots on failure, video retention on failure, and Chromium + Mobile testing.
+
+1. Ensure the development server is running (`npm run dev:web`).
+2. Run the tests:
+   ```bash
+   npx playwright test
+   ```
+3. To view the HTML report (including traces and videos):
+   ```bash
+   npx playwright show-report
+   ```
+
+### Troubleshooting
+- **Tests timing out:** Ensure your local dev server is running on `http://localhost:3000`.
+- **Browser launch failures:** Run `npx playwright install --with-deps` to ensure all browser binaries are present.
